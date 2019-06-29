@@ -67,6 +67,7 @@
             this.txtPassword.Size = new System.Drawing.Size(371, 30);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.TextChanged += new System.EventHandler(this.TxtPassword_TextChanged);
             // 
             // label3
             // 
@@ -112,6 +113,7 @@
             this.txtCareer.Name = "txtCareer";
             this.txtCareer.Size = new System.Drawing.Size(371, 30);
             this.txtCareer.TabIndex = 7;
+            this.txtCareer.TextChanged += new System.EventHandler(this.TxtCareer_TextChanged);
             // 
             // label4
             // 
@@ -146,6 +148,7 @@
             this.txtEnrollment.Name = "txtEnrollment";
             this.txtEnrollment.Size = new System.Drawing.Size(371, 30);
             this.txtEnrollment.TabIndex = 10;
+            this.txtEnrollment.TextChanged += new System.EventHandler(this.TxtEnrollment_TextChanged);
             // 
             // btnSignUp
             // 
@@ -168,6 +171,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(371, 30);
             this.txtName.TabIndex = 12;
+            this.txtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
             // 
             // label6
             // 
