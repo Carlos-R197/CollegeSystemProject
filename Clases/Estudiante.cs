@@ -9,7 +9,7 @@ namespace Clases
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Carrera { get; set; }
-        private string  Password { get; set; }
+        private string Password { get; set; }
 
         public Estudiante(int id, string password, string nombre, string carrera)
         {
@@ -32,7 +32,7 @@ namespace Clases
         public static void AñadirEstudiante(Estudiante est)
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
-            File.AppendAllText(filePath, est.ID + "," + est.Nombre + "," + est.Carrera + "," + est.Password +  Environment.NewLine);
+            File.AppendAllText(filePath, est.ID + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
         }
 
         public static void EliminarEstudiante(int id)
@@ -57,19 +57,13 @@ namespace Clases
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
             List<Estudiante> estudiantes = new List<Estudiante>();
-            int id;
-            string nombre, carrera, password;
             string[] lineas = File.ReadAllLines(filePath);
             string[] datos;
-
+            //Empezando desde la segunda linea lee los datos y guardarlo como elemento en la lista.
             for (int i = 1; i < lineas.Length; i++)
             {
                 datos = lineas[i].Split(',');
-                id = Int32.Parse(datos[0]);
-                nombre = datos[1];
-                carrera = datos[2];
-                password = datos[3];
-                estudiantes.Add(new Estudiante(id, password, nombre, carrera));
+                estudiantes.Add(new Estudiante(Int32.Parse(datos[0]), datos[3], datos[1], datos[2]));
             }
             return estudiantes;
         }
@@ -78,16 +72,17 @@ namespace Clases
         {
             bool estudianteExiste = false;
 
-            List<Estudiante> estTemp = ObtenerListaEstudiantes();
-            for (int i = 0; i < estTemp.Count; i++)
+            foreach (Estudiante est in ObtenerListaEstudiantes())
             {
-                if (estTemp[i].ID == id)
-                    if (estTemp[i].Password == password)
+                if (est.ID == id)
+                    if (est.Password == password)
+                    {
                         estudianteExiste = true;
+                        break;
+                    }
             }
             return estudianteExiste;
         }
-
         public static bool VerificarIdExiste(int id)
         {
             bool idExiste = false;
@@ -104,21 +99,22 @@ namespace Clases
             return idExiste;
 
         }
-
         public static bool VerificarPassword(string password)
         {
             bool passwordExiste = false;
 
-            List<Estudiante> estTemp = ObtenerListaEstudiantes();
-            for (int i = 0; i < estTemp.Count; i++)
+            foreach (Estudiante est in ObtenerListaEstudiantes())
             {
-                if (estTemp[i].Password == password)
+                if (est.Password == password)
                 {
                     passwordExiste = true;
                     break;
                 }
             }
+
             return passwordExiste;
         }
     }
+
+
 }
