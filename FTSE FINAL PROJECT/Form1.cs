@@ -24,7 +24,11 @@ namespace FTSE_FINAL_PROJECT
         {
             if (Estudiante.VerificarEstudianteExiste(Int32.Parse(this.txtEnrollment.Text), this.txtPassword.Text))
             {
-                
+                this.Hide();
+                UserInterface F3 = new UserInterface();
+                F3.ObtenerDataUser(txtEnrollment.Text);
+                F3.ShowDialog();
+                this.Close();
             }
             else
             {

@@ -53,7 +53,7 @@ namespace Clases
             }
         }
 
-        private static List<Estudiante> ObtenerListaEstudiantes()
+        public static List<Estudiante> ObtenerListaEstudiantes()
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
             List<Estudiante> estudiantes = new List<Estudiante>();

@@ -58,15 +58,7 @@ namespace FTSE_FINAL_PROJECT
 
             UpdateButton();
         }
-        private void TxtPassword_TextChanged(object sender, EventArgs e)
-        {
-            if (!txtPassword.Text.Equals(txtPasswordConfirm) || string.IsNullOrEmpty(txtPassword.Text))
-                errorProvider1.SetError(txtPassword, "Las contraseñas deben ser iguales.");
-            else
-                errorProvider1.Clear();
-            UpdateButton();
-        }
-
+        
         private void TxtCareer_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCareer.Text))
@@ -83,6 +75,24 @@ namespace FTSE_FINAL_PROJECT
                                (txtPassword.Text.Equals(txtPasswordConfirm.Text) && !string.IsNullOrEmpty(txtPassword.Text))
                                 && !string.IsNullOrEmpty(txtCareer.Text);
 
+        }
+
+        private void TxtPasswordConfirm_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != txtPasswordConfirm.Text)
+            {
+                errorProvider1.SetError(txtPasswordConfirm, "Las contraseñas deben ser iguales.");
+                checkProvider1.Clear();
+            }
+                
+            else
+            {
+                errorProvider1.Clear();
+                checkProvider1.SetError(txtPasswordConfirm, "Las contraseñas coinciden");
+            }
+                
+
+            UpdateButton();
         }
     }
 }
