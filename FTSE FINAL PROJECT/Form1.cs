@@ -50,9 +50,8 @@ namespace FTSE_FINAL_PROJECT
 
             if (!Int32.TryParse(this.txtEnrollment.Text, out id))
             {
-                errorProvider1.SetError(txtEnrollment, "No puede haber caracteres en el id.");
+                errorProvider1.SetError(txtEnrollment, "No pueden haber caracteres en el id.");
                 txtEnrollment.Clear();
-                
             }
             else
             {

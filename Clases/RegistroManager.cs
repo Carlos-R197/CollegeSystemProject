@@ -9,11 +9,14 @@ namespace Clases
     {
         public static List<Registro> registros = new List<Registro>();
 
-        public static void GuardarTrimestre(int idEstudiante)
+        public static int GuardarTrimestre(int idEstudiante)
         {
             //Carpeta donde se guardara la informacion del estudiante por trimestre
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
-            filePath += "\\Trimestre" + (DeterminarCantidadArchivos(filePath) + 1) + ".csv";
+
+            int PeriodValue = DeterminarCantidadArchivos(filePath) + 1;
+
+            filePath += "\\Trimestre" + PeriodValue + ".csv";
 
             File.AppendAllText(filePath, "Materia" + "," + "Creditos" + "," + "Nota" + Environment.NewLine);
             foreach (Registro reg in registros)
@@ -21,6 +24,9 @@ namespace Clases
                 File.AppendAllText(filePath, reg.subject + "," + reg.credValue + "," + reg.grade + Environment.NewLine);
             }
 
+            RegistroManager.registros.Clear();
+
+            return PeriodValue;
         }
         public static int DeterminarCantidadArchivos(string directorio)
         {
