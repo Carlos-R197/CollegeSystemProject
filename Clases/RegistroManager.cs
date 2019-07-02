@@ -77,5 +77,30 @@ namespace Clases
 
             registros = regs;
         }
+
+        public static List<Trimestre> ObtenerTodosRegistros(int idEstudiante)
+        {
+            string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
+            string[] files = Directory.GetFiles(filePath, "*.csv");
+            string[] lineas;
+            string[] data;
+            List<Registro> reg = new List<Registro>();
+            List<Trimestre> trimestres = new List<Trimestre>();
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                lineas = File.ReadAllLines(filePath);
+                for (int j = 1; j < lineas.Length; j++)
+                {
+                    data = lineas[i].Split(',');
+                    reg.Add(new Registro(data[0], data[1], data[2]));
+                }
+                trimestres[i].Registros.AddRange(reg);
+                trimestres[i].NumTrimestre = i + 1;
+            }
+
+            return trimestres;
+        }
     }
+
 }

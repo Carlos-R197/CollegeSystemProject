@@ -158,5 +158,13 @@ namespace FTSE_FINAL_PROJECT
         {
 
         }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f = new Form1();
+            f.ShowDialog();
+            this.Close();
+        }
     }
 }
