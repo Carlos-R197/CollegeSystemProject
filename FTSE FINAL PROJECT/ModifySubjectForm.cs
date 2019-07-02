@@ -18,14 +18,11 @@ namespace FTSE_FINAL_PROJECT
             InitializeComponent();
 
             UserInterface f = new UserInterface();
-            txtSubject.Text = f.ThisListView.SelectedItems.
-            txtCred.Text = f.ThisListView.SelectedItems[0].SubItems[1].Text;
-            txtGrade.Text = f.ThisListView.SelectedItems[0].SubItems[2].Text;
         }
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            RegistroManager.registros.Add(new Registro(txtSubject.Text, txtCred.Text, txtGrade.Text));
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)

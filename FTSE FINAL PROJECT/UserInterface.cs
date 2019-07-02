@@ -38,7 +38,7 @@ namespace FTSE_FINAL_PROJECT
 
         public void AddData()
         {
-            foreach (Registro registro in RegistroManager.registros)
+            foreach(Registro registro in RegistroManager.registros)
             {
                 ListViewItem a = ThisListView.Items.Add(registro.subject);
 
