@@ -240,7 +240,7 @@
             this.btnModifyTri.Name = "btnModifyTri";
             this.btnModifyTri.Size = new System.Drawing.Size(192, 36);
             this.btnModifyTri.TabIndex = 4;
-            this.btnModifyTri.Text = "Modificar Trimestre";
+            this.btnModifyTri.Text = "Ir al trimestre";
             this.btnModifyTri.UseVisualStyleBackColor = true;
             this.btnModifyTri.Click += new System.EventHandler(this.BtnModifyTri_Click);
             // 

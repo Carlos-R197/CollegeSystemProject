@@ -27,6 +27,7 @@ namespace FTSE_FINAL_PROJECT
                 this.Hide();
                 Form1 f1 = new Form1();
                 f1.ShowDialog();
+                this.Close();
             }
             else
                 MessageBox.Show("Ese id ya existe. Use uno diferente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -93,6 +94,14 @@ namespace FTSE_FINAL_PROJECT
                 
 
             UpdateButton();
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f1 = new Form1();
+            f1.ShowDialog();
+            this.Close();
         }
     }
 }

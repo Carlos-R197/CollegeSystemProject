@@ -32,7 +32,14 @@ namespace FTSE_FINAL_PROJECT
             }
             else
             {
-                MessageBox.Show("Datos incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!Estudiante.VerificarIdExiste(Int32.Parse(txtEnrollment.Text)))
+                    MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else if (!Estudiante.VerificarPasswordExiste(txtPassword.Text))
+                    MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else
+                    MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

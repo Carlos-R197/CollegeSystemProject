@@ -100,7 +100,7 @@ namespace Clases
             return idExiste;
 
         }
-        public static bool VerificarPassword(string password)
+        public static bool VerificarPasswordExiste(string password)
         {
             bool passwordExiste = false;
 

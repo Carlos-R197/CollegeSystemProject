@@ -18,9 +18,6 @@ namespace FTSE_FINAL_PROJECT
             InitializeComponent();
         }
 
-
-        
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Registro NuevoRegistro = new Registro(txtSubject.Text, txtCred.Text, txtGrade.Text);
@@ -33,9 +30,22 @@ namespace FTSE_FINAL_PROJECT
             this.Close();
         }
 
+        private void TxtCred_TextChanged(object sender, EventArgs e)
+        {
+            int id;
+
+            if (!Int32.TryParse(this.txtCred.Text, out id))
+            {
+                errorProvider1.SetError(txtCred, "No puede haber carácteres en los créditos.");
+                txtCred.Clear();
+            }
+            else
+                errorProvider1.Clear();
+        }
+
         private void Button2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
