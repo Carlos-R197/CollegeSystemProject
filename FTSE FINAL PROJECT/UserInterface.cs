@@ -34,10 +34,18 @@ namespace FTSE_FINAL_PROJECT
 
             labelName.Text = ActualEstudiante.Nombre;
             labelCareer.Text = ActualEstudiante.Carrera;
+
+            if (RegistroManager.DeterminarCantidadArchivos(Environment.CurrentDirectory + "\\" + ActualEstudiante.ID) >= 1)
+            {
+                RegistroManager.LlenarListaRegistro(Environment.CurrentDirectory + "\\"
+                                                    + ActualEstudiante.ID + "\\Trimestre" + labelNumTrismestre.Text + ".csv");
+            }
+            AddData();
         }
 
         public void AddData()
         {
+            ThisListView.Items.Clear();
             foreach (Registro registro in RegistroManager.registros)
             {
                 ListViewItem a = ThisListView.Items.Add(registro.subject);
@@ -61,7 +69,8 @@ namespace FTSE_FINAL_PROJECT
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            RegistroManager.GuardarTrimestre(ActualEstudiante.ID);
+            RegistroManager.GuardarTrimestreEspecifico(ActualEstudiante.ID, Int32.Parse(labelNumTrismestre.Text));
+            labelNumTrismestre.Text = (RegistroManager.DeterminarCantidadArchivos((Environment.CurrentDirectory + "\\" + ActualEstudiante.ID.ToString())) + 1).ToString();
         }
 
         private void BtnModifyTri_Click(object sender, EventArgs e)
@@ -97,16 +106,18 @@ namespace FTSE_FINAL_PROJECT
 
         private void BtnModify_Click(object sender, EventArgs e)
         {
-            if (ThisListView.Items.Count > 0)
+            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
             {
                 ModifySubjectForm f = new ModifySubjectForm(ThisListView.SelectedItems[0].SubItems[0].Text,
                                                             ThisListView.SelectedItems[0].SubItems[1].Text,
-                                                            ThisListView.SelectedItems[0].SubItems[2].Text);
+                                                            ThisListView.SelectedItems[0].SubItems[2].Text,
+                                                            ActualEstudiante.ID,
+                                                            Int32.Parse(labelNumTrismestre.Text));
                 f.Show();
             }
             else
             {
-                MessageBox.Show("No hay nada para modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar algo para modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
