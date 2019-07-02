@@ -19,7 +19,6 @@ namespace Clases
             this.Carrera = carrera;
             this.Password = password;
         }
-
         public static void CrearArchivo()
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
@@ -29,14 +28,12 @@ namespace Clases
                 File.AppendAllText(filePath, "ID" + "," + "Nombre" + "," + "Carrera" + "," + "Password" + Environment.NewLine);
             }
         }
-
         public static void AñadirEstudiante(Estudiante est)
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
             File.AppendAllText(filePath, est.ID + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
             Directory.CreateDirectory(Environment.CurrentDirectory + "\\" + est.ID);
         }
-
         public static void EliminarEstudiante(int id)
         {
             List<Estudiante> estudiantes = ObtenerListaEstudiantes();
@@ -54,7 +51,6 @@ namespace Clases
 
             }
         }
-
         public static List<Estudiante> ObtenerListaEstudiantes()
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
@@ -69,7 +65,6 @@ namespace Clases
             }
             return estudiantes;
         }
-
         public static bool VerificarEstudianteExiste(int id, string password)
         {
             bool estudianteExiste = false;
