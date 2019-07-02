@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModifySubjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifySubjectForm.Designer.cs">
+      <DependentUpon>ModifySubjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddSubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="UserInterface.Designer.cs">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ModifySubjectForm.resx">
+      <DependentUpon>ModifySubjectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddSubjectForm.resx">
       <DependentUpon>AddSubjectForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -11,26 +11,21 @@ using System.Windows.Forms;
 
 namespace FTSE_FINAL_PROJECT
 {
-    public partial class AddSubjectForm : Form
+    public partial class ModifySubjectForm : Form
     {
-        public AddSubjectForm()
+        public ModifySubjectForm()
         {
             InitializeComponent();
+
+            UserInterface f = new UserInterface();
+            txtSubject.Text = f.ThisListView.SelectedItems.
+            txtCred.Text = f.ThisListView.SelectedItems[0].SubItems[1].Text;
+            txtGrade.Text = f.ThisListView.SelectedItems[0].SubItems[2].Text;
         }
-
-
-        
-
+       
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Registro NuevoRegistro = new Registro(txtSubject.Text, txtCred.Text, txtGrade.Text);
-
-            RegistroManager.registros.Add(NuevoRegistro);
-
-            txtSubject.Clear();
-            txtCred.Clear();
-            txtGrade.Clear();
-            this.Close();
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)

@@ -33,6 +33,7 @@ namespace Clases
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
             File.AppendAllText(filePath, est.ID + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
+            Directory.CreateDirectory(Environment.CurrentDirectory + "\\" + est.ID);
         }
 
         public static void EliminarEstudiante(int id)
