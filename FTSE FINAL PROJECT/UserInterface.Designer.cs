@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
             this.labelName = new System.Windows.Forms.Label();
             this.labelCareer = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnModifyTri = new System.Windows.Forms.Button();
             this.txtTrimester = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelName
@@ -250,6 +253,10 @@
             this.txtTrimester.Size = new System.Drawing.Size(85, 26);
             this.txtTrimester.TabIndex = 5;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -275,6 +282,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserInterface";
             this.Text = "CALCULO DE INDICE ACADEMICO";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +308,7 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnModifyTri;
         private System.Windows.Forms.TextBox txtTrimester;
-        public System.Windows.Forms.ListView ThisListView;
+        private System.Windows.Forms.ListView ThisListView;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

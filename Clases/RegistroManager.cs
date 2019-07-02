@@ -22,7 +22,7 @@ namespace Clases
             }
 
         }
-        private static int DeterminarCantidadArchivos(string directorio)
+        public static int DeterminarCantidadArchivos(string directorio)
         {
             string[] files = Directory.GetFiles(directorio, "*.csv");
             return files.Length;
