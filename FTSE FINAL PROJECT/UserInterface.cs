@@ -45,6 +45,7 @@ namespace FTSE_FINAL_PROJECT
                 a.SubItems.Add(registro.credValue);
                 a.SubItems.Add(registro.grade);
             }
+            ThisListView.Clear();
         }
 
         private void BtnAddSubject_Click(object sender, EventArgs e)
@@ -66,28 +67,16 @@ namespace FTSE_FINAL_PROJECT
 
         private void BtnModifyTri_Click(object sender, EventArgs e)
         {
-            int numTrimestres = RegistroManager.DeterminarCantidadArchivos(Environment.CurrentDirectory + "\\" + ActualEstudiante.ID);
-
-            if (Int32.Parse(txtTrimester.Text) > numTrimestres || Int32.Parse(txtTrimester.Text) < 0)
+            string path = RegistroManager.ObtenerPathDeArchivo(ActualEstudiante.ID, Int32.Parse(txtTrimester.Text));
+            RegistroManager.registros.Clear();
+            string[] lineas = File.ReadAllLines(path);
+            string[] data;
+            for (int i = 1; i < lineas.Length; i++)
             {
-                errorProvider1.SetError(txtTrimester, "trimestre no válido");
-                txtTrimester.Clear();
+                data = lineas[i].Split(',');
+                RegistroManager.registros.Add(new Registro(data[0], data[1], data[2]));
             }
-            else
-            {
-                string path = RegistroManager.ObtenerPathDeArchivo(ActualEstudiante.ID, Int32.Parse(txtTrimester.Text));
-                RegistroManager.registros.Clear();
-                string[] lineas = File.ReadAllLines(path);
-                string[] data;
-                for (int i = 1; i < lineas.Length; i++)
-                {
-                    data = lineas[i].Split(',');
-                    RegistroManager.registros.Add(new Registro(data[0], data[1], data[2]));
-                }
-                AddData();
-                labelNumTrismestre.Text = txtTrimester.Text;
-                txtTrimester.Text = string.Empty;
-            }
+            AddData();
         }
 
         private void ThisListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,17 +86,8 @@ namespace FTSE_FINAL_PROJECT
 
         private void BtnModify_Click(object sender, EventArgs e)
         {
-            if (ThisListView.Items.Count > 0)
-            {
-                ModifySubjectForm f = new ModifySubjectForm(ThisListView.SelectedItems[0].SubItems[0].Text,
-                                                            ThisListView.SelectedItems[0].SubItems[1].Text,
-                                                            ThisListView.SelectedItems[0].SubItems[2].Text);
-                f.Show();
-            }
-            else
-            {
-                MessageBox.Show("No hay nada para modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ModifySubjectForm f = new ModifySubjectForm();
+            f.Show();
         }
     }
 }

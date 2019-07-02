@@ -27,6 +27,8 @@ namespace FTSE_FINAL_PROJECT
 
             RegistroManager.registros.Add(NuevoRegistro);
 
+
+
             txtSubject.Clear();
             txtCred.Clear();
             txtGrade.Clear();

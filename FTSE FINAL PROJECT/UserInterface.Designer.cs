@@ -143,14 +143,14 @@
             // 
             // ThisListView
             // 
+            this.ThisListView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ThisListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ThisListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Asignatura,
             this.CantCreditos,
             this.Calificacion});
             this.ThisListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ThisListView.HideSelection = false;
-            this.ThisListView.Location = new System.Drawing.Point(404, 126);
-            this.ThisListView.Margin = new System.Windows.Forms.Padding(4);
+            this.ThisListView.Location = new System.Drawing.Point(303, 102);
             this.ThisListView.Name = "ThisListView";
             this.ThisListView.Size = new System.Drawing.Size(704, 413);
             this.ThisListView.TabIndex = 2;
@@ -278,9 +278,10 @@
             this.Controls.Add(this.labelCareer);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserInterface";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CALCULO DE INDICE ACADEMICO";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
