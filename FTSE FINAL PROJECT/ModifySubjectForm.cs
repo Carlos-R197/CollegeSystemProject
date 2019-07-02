@@ -13,21 +13,42 @@ namespace FTSE_FINAL_PROJECT
 {
     public partial class ModifySubjectForm : Form
     {
-        public ModifySubjectForm()
+        private string Materia { get; set; }
+        public ModifySubjectForm(string materia, string creditos, string nota)
         {
             InitializeComponent();
 
-            UserInterface f = new UserInterface();
+            this.Materia = materia;
+            txtSubject.Text = materia;
+            txtCred.Text = creditos;
+            txtGrade.Text = nota;
         }
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            foreach (Registro reg in RegistroManager.registros)
+            {
+                if (reg.subject == Materia)
+                {
+                    reg.subject = txtSubject.Text;
+                    reg.credValue = txtCred.Text;
+                    reg.grade = txtGrade.Text;
+                    break;
+                }
+            }
+
+            txtSubject.Clear();
+            txtCred.Clear();
+            txtGrade.Clear();
+            this.Close();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-
+            txtSubject.Clear();
+            txtCred.Clear();
+            txtGrade.Clear();
+            this.Close();
         }
     }
 }

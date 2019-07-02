@@ -44,7 +44,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.checkProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkProvider1)).BeginInit();
             this.SuspendLayout();
@@ -148,7 +147,7 @@
             // btnSignUp
             // 
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignUp.Location = new System.Drawing.Point(286, 329);
+            this.btnSignUp.Location = new System.Drawing.Point(394, 330);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(93, 29);
             this.btnSignUp.TabIndex = 11;
@@ -186,17 +185,6 @@
             this.checkProvider1.ContainerControl = this;
             this.checkProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("checkProvider1.Icon")));
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(395, 329);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(93, 29);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,7 +192,6 @@
             this.ClientSize = new System.Drawing.Size(510, 370);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.txtEnrollment);
             this.Controls.Add(this.label5);
@@ -217,7 +204,6 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
             this.Name = "Form2";
             this.Text = "Registrarse";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -243,6 +229,5 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider checkProvider1;
-        private System.Windows.Forms.Button btnCancel;
     }
 }

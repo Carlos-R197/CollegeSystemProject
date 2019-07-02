@@ -94,13 +94,5 @@ namespace FTSE_FINAL_PROJECT
 
             UpdateButton();
         }
-
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form1 F1 = new Form1();
-
-            F1.ShowDialog();
-        }
     }
 }

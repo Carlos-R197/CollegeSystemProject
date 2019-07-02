@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
             this.labelName = new System.Windows.Forms.Label();
             this.labelCareer = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnModifyTri = new System.Windows.Forms.Button();
             this.txtTrimester = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelName
@@ -140,14 +143,14 @@
             // 
             // ThisListView
             // 
-            this.ThisListView.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ThisListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ThisListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Asignatura,
             this.CantCreditos,
             this.Calificacion});
             this.ThisListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ThisListView.Location = new System.Drawing.Point(303, 102);
+            this.ThisListView.HideSelection = false;
+            this.ThisListView.Location = new System.Drawing.Point(404, 126);
+            this.ThisListView.Margin = new System.Windows.Forms.Padding(4);
             this.ThisListView.Name = "ThisListView";
             this.ThisListView.Size = new System.Drawing.Size(704, 413);
             this.ThisListView.TabIndex = 2;
@@ -250,6 +253,10 @@
             this.txtTrimester.Size = new System.Drawing.Size(85, 26);
             this.txtTrimester.TabIndex = 5;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -271,11 +278,11 @@
             this.Controls.Add(this.labelCareer);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserInterface";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CALCULO DE INDICE ACADEMICO";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,6 +308,7 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnModifyTri;
         private System.Windows.Forms.TextBox txtTrimester;
-        public System.Windows.Forms.ListView ThisListView;
+        private System.Windows.Forms.ListView ThisListView;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
