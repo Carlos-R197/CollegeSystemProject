@@ -35,9 +35,16 @@ namespace FTSE_FINAL_PROJECT
 
             labelName.Text = ActualEstudiante.Nombre;
             labelCareer.Text = ActualEstudiante.Carrera;
-            labelNumTrismestre.Text = ActualEstudiante.Trimestre.ToString();
-        }
+            labelNumTrismestre.Text = "1";
 
+            string pathUsuario = Environment.CurrentDirectory + "\\" + id;
+            if (RegistroManager.DeterminarCantidadArchivos(pathUsuario) > 0)
+            {
+                pathUsuario += "\\Trimestre" + labelNumTrismestre.Text + ".csv";
+                RegistroManager.LlenarListaRegistro(pathUsuario);
+                AddData();
+            }
+        }
         //Agrega toda la data disponible en la lista de registros al ListView
         public void AddData()
         {
@@ -51,7 +58,6 @@ namespace FTSE_FINAL_PROJECT
                 a.SubItems.Add(registro.grade);
             }
         }
-
         //Muestra el formulario para agregar una nueva asignatura
         public void ShowAddSubjectForm()
         {
@@ -59,7 +65,6 @@ namespace FTSE_FINAL_PROJECT
 
             F4.ShowDialog();
         }
-
         //Accede al archivo del trimestre para reescribirlo
         public void ModifyPeriod()
         {
@@ -96,7 +101,7 @@ namespace FTSE_FINAL_PROJECT
         //Modificar un registro en el listview
         public void ModifyListViewData()
         {
-            if (ThisListView.Items.Count > 0)
+            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
             {
                 ModifySubjectForm f = new ModifySubjectForm(ThisListView.SelectedItems[0].SubItems[0].Text,
                                                             ThisListView.SelectedItems[0].SubItems[1].Text,
@@ -105,7 +110,7 @@ namespace FTSE_FINAL_PROJECT
             }
             else
             {
-                MessageBox.Show("No hay nada para modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar algo para modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -124,10 +129,12 @@ namespace FTSE_FINAL_PROJECT
         //BOTON para guardar los registros del listview en un archivo de trimestres e informarle al usuario
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            int PeriodValue = RegistroManager.GuardarTrimestre(ActualEstudiante.ID);
+            int trimestreActual = Int32.Parse(labelNumTrismestre.Text);
+            int PeriodValue = RegistroManager.GuardarTrimestreEspecifico(ActualEstudiante.ID, trimestreActual);
 
             MessageBox.Show($"El trimestre {PeriodValue} ha sido guardado con exito", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ThisListView.Items.Clear();
+            labelNumTrismestre.Text = (RegistroManager.DeterminarCantidadArchivos(ActualEstudiante.ID.ToString()) + 1).ToString();
         }
 
         //BOTON para modificar el archivo del trimestre seleccionado

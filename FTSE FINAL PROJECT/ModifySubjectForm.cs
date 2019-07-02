@@ -14,15 +14,15 @@ namespace FTSE_FINAL_PROJECT
     public partial class ModifySubjectForm : Form
     {
         private string Materia { get; set; }
-        private int ID { get; set; }
-        private int Trimestre { get; set; }
-        public ModifySubjectForm(string materia, string creditos, string nota, int id, int trimestre)
+        //private int ID { get; set; }
+       // private int Trimestre { get; set; }
+        public ModifySubjectForm(string materia, string creditos, string nota)
         {
             InitializeComponent();
 
             this.Materia = materia;
-            this.ID = id;
-            this.Trimestre = trimestre;
+            //this.ID = id;
+            //this.Trimestre = trimestre;
             txtSubject.Text = materia;
             txtCred.Text = creditos;
             txtGrade.Text = nota;

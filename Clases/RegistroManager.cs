@@ -10,11 +10,14 @@ namespace Clases
         public static List<Registro> registros = new List<Registro>();
 
         //Guarda la informacion de los registros basado en el Trimestre
-        public static void GuardarTrimestreEspecifico(int idEstudiante, int trimestre)
+        public static int GuardarTrimestreEspecifico(int idEstudiante, int trimestre)
         {
             //Carpeta donde se guardara la informacion del estudiante por trimestre
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
-            filePath += "\\Trimestre" + trimestre + ".csv";
+
+            int PeriodValue = trimestre;
+
+            filePath += "\\Trimestre" + PeriodValue + ".csv";
 
             if (File.Exists(filePath))
                 File.Delete(filePath);
@@ -26,6 +29,8 @@ namespace Clases
             }
 
             registros.Clear();
+
+            return PeriodValue;
         }
         public static int GuardarTrimestre(int idEstudiante)
         {
