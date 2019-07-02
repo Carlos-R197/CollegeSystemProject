@@ -10,6 +10,7 @@ namespace Clases
         public string Nombre { get; set; }
         public string Carrera { get; set; }
         private string Password { get; set; }
+        public int Trimestre { get; set; }
 
         public Estudiante(int id, string password, string nombre, string carrera)
         {

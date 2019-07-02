@@ -48,7 +48,7 @@ namespace FTSE_FINAL_PROJECT
             this.Close();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             txtSubject.Clear();
             txtCred.Clear();
