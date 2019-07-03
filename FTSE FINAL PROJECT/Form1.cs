@@ -21,25 +21,33 @@ namespace FTSE_FINAL_PROJECT
 
         private void BtnJoin_Click(object sender, EventArgs e)
         {
-            if (Estudiante.VerificarEstudianteExiste(Int32.Parse(this.txtEnrollment.Text), this.txtPassword.Text))
-            {
-                this.Hide();
-                UserInterface F3 = new UserInterface();
-                F3.ObtenerDataUser(txtEnrollment.Text);
-                F3.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                if (!Estudiante.VerificarIdExiste(Int32.Parse(txtEnrollment.Text)))
-                    MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                else if (!Estudiante.VerificarPasswordExiste(txtPassword.Text))
-                    MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            //try
+           // {
+                if (Estudiante.VerificarEstudianteExiste(Int32.Parse(this.txtEnrollment.Text), this.txtPassword.Text))
+                {
+                    this.Hide();
+                    UserInterface F3 = new UserInterface();
+                    F3.ObtenerDataUser(txtEnrollment.Text);
+                    F3.ShowDialog();
+                    this.Close();
+                }
                 else
-                    MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                {
+                    if (!Estudiante.VerificarIdExiste(Int32.Parse(txtEnrollment.Text)))
+                        MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    else if (!Estudiante.VerificarPasswordExiste(txtPassword.Text))
+                        MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    else
+                        MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Debe escribir su id para entrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            
         }
 
         private void BtnSignUp_Click(object sender, EventArgs e)

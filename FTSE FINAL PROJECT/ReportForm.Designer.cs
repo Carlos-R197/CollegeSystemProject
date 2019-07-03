@@ -36,26 +36,31 @@
             // ThisListBox
             // 
             this.ThisListBox.FormattingEnabled = true;
-            this.ThisListBox.Location = new System.Drawing.Point(2, 12);
+            this.ThisListBox.ItemHeight = 16;
+            this.ThisListBox.Location = new System.Drawing.Point(3, 15);
+            this.ThisListBox.Margin = new System.Windows.Forms.Padding(4);
             this.ThisListBox.Name = "ThisListBox";
             this.ThisListBox.ScrollAlwaysVisible = true;
-            this.ThisListBox.Size = new System.Drawing.Size(799, 420);
+            this.ThisListBox.Size = new System.Drawing.Size(1064, 516);
             this.ThisListBox.TabIndex = 0;
             // 
             // btnAlright
             // 
-            this.btnAlright.Location = new System.Drawing.Point(726, 442);
+            this.btnAlright.Location = new System.Drawing.Point(968, 544);
+            this.btnAlright.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlright.Name = "btnAlright";
-            this.btnAlright.Size = new System.Drawing.Size(75, 23);
+            this.btnAlright.Size = new System.Drawing.Size(100, 28);
             this.btnAlright.TabIndex = 1;
             this.btnAlright.Text = "Listo";
             this.btnAlright.UseVisualStyleBackColor = true;
+            this.btnAlright.Click += new System.EventHandler(this.BtnAlright_Click);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(645, 442);
+            this.btnRefresh.Location = new System.Drawing.Point(860, 544);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 34);
+            this.btnRefresh.Size = new System.Drawing.Size(100, 42);
             this.btnRefresh.TabIndex = 1;
             this.btnRefresh.Text = "Actualizar Data";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -63,12 +68,14 @@
             // 
             // ReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 477);
+            this.ClientSize = new System.Drawing.Size(1071, 587);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAlright);
             this.Controls.Add(this.ThisListBox);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "ReportForm";
             this.Text = "ReportForm";
             this.ResumeLayout(false);

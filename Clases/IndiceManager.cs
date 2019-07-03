@@ -7,7 +7,27 @@ namespace Clases
 {
     public class IndiceManager
     {
+        public static string TransformarEnLetra(short nota)
+        {
+            string letra;
 
+            if (nota >= 90)
+                letra = "A";
+            else if (nota >= 85)
+                letra = "B+";
+            else if (nota >= 80)
+                letra = "B";
+            else if (nota >= 75)
+                letra = "C+";
+            else if (nota >= 70)
+                letra = "C";
+            else if (nota >= 60)
+                letra = "D";
+            else
+                letra = "F";
+
+            return letra;
+        }
         public static decimal TransformarEnValor(short nota)
         {
             decimal valor;
@@ -28,29 +48,14 @@ namespace Clases
 
             return valor;
         }
-
         public static decimal TransformarEnPuntosHonor(decimal valor, short creditos)
         {
             return valor * creditos;
         }
-
-        public static int SumarPuntosHonor(List<short> puntos)
-        {
-            int suma = 0;
-
-            foreach (short num in puntos)
-            {
-                suma += num;
-            }
-
-            return suma;
-        }
-
         public static decimal ObtenerIndice(decimal puntos, short creditos)
         {
             return puntos / creditos;
         }
-
         public static string Honor(float indice)
         {
             string honor;
@@ -66,7 +71,6 @@ namespace Clases
 
             return honor;
         }
-
         public static decimal ObtenerIndiceAcumulado(int id)
         {
             List<decimal> indices = new List<decimal>();
@@ -87,7 +91,6 @@ namespace Clases
             }
             return indices.Average(); 
         }
-
         public static decimal ObtenerIndiceTrimestre(int id, int trimestre)
         {
             decimal valor, totalPuntos = 0;
@@ -105,7 +108,5 @@ namespace Clases
 
             return ObtenerIndice(totalPuntos, totalCreditos);
         }
-
-
     }
 }

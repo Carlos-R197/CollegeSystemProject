@@ -154,7 +154,6 @@ namespace FTSE_FINAL_PROJECT
             ReportForm F = new ReportForm();
             F.GetId(ActualEstudiante.ID);
             F.ShowDialog();
-            this.Close();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
