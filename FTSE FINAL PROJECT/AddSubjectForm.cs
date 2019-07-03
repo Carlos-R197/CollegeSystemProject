@@ -19,14 +19,22 @@ namespace FTSE_FINAL_PROJECT
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Registro NuevoRegistro = new Registro(txtSubject.Text, txtCred.Text, Int16.Parse(txtGrade.Text));
+            try
+            {
+                Registro NuevoRegistro = new Registro(txtSubject.Text, txtCred.Text, short.Parse(txtGrade.Text));
 
-            RegistroManager.registros.Add(NuevoRegistro);
+                RegistroManager.registros.Add(NuevoRegistro);
 
-            txtSubject.Clear();
-            txtCred.Clear();
-            txtGrade.Clear();
-            this.Close();
+                txtSubject.Clear();
+                txtCred.Clear();
+                txtGrade.Clear();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("La calificacion debe ser un numero entero positivo entre 0 y 100");
+                txtGrade.Clear();
+            }
         }
         private void TxtCred_TextChanged(object sender, EventArgs e)
         {
@@ -48,9 +56,10 @@ namespace FTSE_FINAL_PROJECT
         {
             short grade;
             //Si grado no es un numero entre 0 y 100 tirar error.
-            if (!Int16.TryParse(this.txtCred.Text, out grade) || Int16.Parse(txtGrade.Text) > 100 || Int16.Parse(txtGrade.Text) < 0)
+            if (!Int16.TryParse(this.txtCred.Text, out grade))
             {
-                errorProvider1.SetError(txtCred, "El grado debe un numero entre 0 y 100.");
+                if (grade > 100 || grade < 0)
+                    errorProvider1.SetError(txtCred, "El grado debe un numero entre 0 y 100.");
                 txtCred.Clear();
             }
             else
