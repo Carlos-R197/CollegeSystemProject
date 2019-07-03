@@ -80,7 +80,7 @@
             // 
             this.txtSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubject.Location = new System.Drawing.Point(143, 37);
-            this.txtSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(263, 26);
             this.txtSubject.TabIndex = 2;
@@ -89,7 +89,7 @@
             // 
             this.txtCred.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCred.Location = new System.Drawing.Point(143, 78);
-            this.txtCred.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCred.Margin = new System.Windows.Forms.Padding(4);
             this.txtCred.Name = "txtCred";
             this.txtCred.Size = new System.Drawing.Size(85, 26);
             this.txtCred.TabIndex = 2;
@@ -99,15 +99,16 @@
             // 
             this.txtGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrade.Location = new System.Drawing.Point(143, 126);
-            this.txtGrade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGrade.Margin = new System.Windows.Forms.Padding(4);
             this.txtGrade.Name = "txtGrade";
             this.txtGrade.Size = new System.Drawing.Size(85, 26);
             this.txtGrade.TabIndex = 2;
+            this.txtGrade.TextChanged += new System.EventHandler(this.TxtGrade_TextChanged);
             // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(204, 180);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 3;
@@ -118,7 +119,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(312, 180);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 4;
@@ -144,7 +145,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddSubjectForm";
             this.Text = "Agregar Asignatura";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

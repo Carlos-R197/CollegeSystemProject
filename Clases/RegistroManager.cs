@@ -72,7 +72,7 @@ namespace Clases
             for (int i = 1; i < lineas.Length; i++)
             {
                 data = lineas[i].Split(',');
-                regs.Add(new Registro(data[0], data[1], data[2]));
+                regs.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
             }
 
             registros = regs;
@@ -93,13 +93,29 @@ namespace Clases
                 for (int j = 1; j < lineas.Length; j++)
                 {
                     data = lineas[i].Split(',');
-                    reg.Add(new Registro(data[0], data[1], data[2]));
+                    reg.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
                 }
                 trimestres[i].Registros.AddRange(reg);
                 trimestres[i].NumTrimestre = i + 1;
             }
 
             return trimestres;
+        }
+        public static List<Registro> ObtenerRegistrosTrimestre(int id, int trimestre)
+        {
+            List<Registro> registros = new List<Registro>();
+            string filePath = Environment.CurrentDirectory + "\\" + id;
+            filePath += "\\Trimestre" + trimestre + ".csv";
+            string[] lineas = File.ReadAllLines(filePath);
+            string[] data;
+
+            for (int i = 1; i < lineas.Length; i++)
+            {
+                data = lineas[i].Split(',');
+                registros.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
+            }
+
+            return registros;
         }
     }
 

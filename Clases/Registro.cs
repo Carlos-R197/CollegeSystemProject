@@ -8,9 +8,9 @@ namespace Clases
     {
         public string subject { get; set; }
         public string credValue { get; set; }
-        public string grade { get; set; }
+        public short grade { get; set; }
 
-        public Registro(string Subject, string CredValue, string Grade)
+        public Registro(string Subject, string CredValue, short Grade)
         {
             subject = Subject;
             credValue = CredValue;

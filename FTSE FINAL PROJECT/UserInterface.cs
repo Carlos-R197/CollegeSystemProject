@@ -55,7 +55,7 @@ namespace FTSE_FINAL_PROJECT
                 ListViewItem a = ThisListView.Items.Add(registro.subject);
 
                 a.SubItems.Add(registro.credValue);
-                a.SubItems.Add(registro.grade);
+                a.SubItems.Add(registro.grade.ToString());
             }
         }
         //Muestra el formulario para agregar una nueva asignatura
@@ -85,7 +85,7 @@ namespace FTSE_FINAL_PROJECT
                     for (int i = 1; i < lineas.Length; i++)
                     {
                         data = lineas[i].Split(',');
-                        RegistroManager.registros.Add(new Registro(data[0], data[1], data[2]));
+                        RegistroManager.registros.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
                     }
                     AddData();
                     labelNumTrismestre.Text = txtTrimester.Text;
