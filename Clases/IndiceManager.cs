@@ -11,7 +11,7 @@ namespace Clases
         private static float TransformarEnValor(short nota)
         {
             float valor;
-            if (nota >= 90 )
+            if (nota >= 90 && nota < 101 )
                 valor = 4;
             else if (nota >= 85 && nota < 90)
                 valor = 3.5f;
