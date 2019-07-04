@@ -49,6 +49,9 @@ namespace FTSE_FINAL_PROJECT
 
                 ThisListBox.Items.Add($"Su indice trimestral es: {indice}");
             }
+
+            ThisListBox.Items.Add("");
+            ThisListBox.Items.Add($"Su indice general es: {IndiceManager.ObtenerIndiceAcumulado(id)}");
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)

@@ -29,7 +29,6 @@ namespace FTSE_FINAL_PROJECT
             txtGrade.Clear();
             this.Close();
 
-            MessageBox.Show("La calificacion debe ser un numero entero positivo entre 0 y 100");
             txtGrade.Clear();
         }
         private void TxtCred_TextChanged(object sender, EventArgs e)

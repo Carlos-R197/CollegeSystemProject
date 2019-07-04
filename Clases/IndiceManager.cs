@@ -98,7 +98,6 @@ namespace Clases
 
             List<Registro> registros = RegistroManager.ObtenerRegistrosTrimestre(id, trimestre);
 
-
             foreach (Registro reg in registros)
             {
                 valor = TransformarEnValor(reg.grade);

@@ -55,7 +55,7 @@ namespace FTSE_FINAL_PROJECT
                 ListViewItem a = ThisListView.Items.Add(registro.subject);
 
                 a.SubItems.Add(registro.credValue);
-                a.SubItems.Add(registro.grade.ToString());
+                a.SubItems.Add(IndiceManager.TransformarEnLetra(registro.grade));
             }
         }
         //Muestra el formulario para agregar una nueva asignatura
