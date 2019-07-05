@@ -10,7 +10,7 @@ namespace Clases
         public static List<Registro> registros = new List<Registro>();
 
         //Guarda la informacion de los registros basado en el Trimestre
-        public static int GuardarTrimestreEspecifico(int idEstudiante, int trimestre)
+        public static int GuardarTrimestreEspecifico(string idEstudiante, int trimestre)
         {
             //Carpeta donde se guardara la informacion del estudiante por trimestre
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
@@ -32,7 +32,7 @@ namespace Clases
 
             return PeriodValue;
         }
-        public static int GuardarTrimestre(int idEstudiante)
+        public static int GuardarTrimestre(string idEstudiante)
         {
             //Carpeta donde se guardara la informacion del estudiante por trimestre
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
@@ -57,7 +57,7 @@ namespace Clases
             string[] files = Directory.GetFiles(directorio, "*.csv");
             return files.Length;
         }
-        public static string ObtenerPathDeArchivo(int id, int trimestre)
+        public static string ObtenerPathDeArchivo(string id, int trimestre)
         {
            string path = Environment.CurrentDirectory + "\\" + id + "\\" + "Trimestre" + trimestre + ".csv";
            return path;
@@ -77,7 +77,7 @@ namespace Clases
 
             registros = regs;
         }
-        public static List<Trimestre> ObtenerTodosRegistros(int idEstudiante)
+        public static List<Trimestre> ObtenerTodosRegistros(string idEstudiante)
         {
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
             string[] files = Directory.GetFiles(filePath, "*.csv");
@@ -99,7 +99,7 @@ namespace Clases
 
             return trimestres;
         }
-        public static List<Registro> ObtenerRegistrosTrimestre(int id, int trimestre)
+        public static List<Registro> ObtenerRegistrosTrimestre(string id, int trimestre)
         {
             List<Registro> registros = new List<Registro>();
             string filePath = Environment.CurrentDirectory + "\\" + id;

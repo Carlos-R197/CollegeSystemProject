@@ -20,34 +20,13 @@ namespace FTSE_FINAL_PROJECT
         }
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
-            if (!Estudiante.VerificarIdExiste(Int32.Parse(txtEnrollment.Text)))
-            {
-                Estudiante.AñadirEstudiante(new Estudiante(Int32.Parse(this.txtEnrollment.Text), this.txtPassword.Text, this.txtName.Text, this.txtCareer.Text));
-                MessageBox.Show("El usuario fue creado satisfactoriamente", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-                Form1 f1 = new Form1();
-                f1.ShowDialog();
-                this.Close();
-            }
-            else
-                MessageBox.Show("Ese id ya existe. Use uno diferente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            string id = Estudiante.AñadirEstudiante(new Estudiante(this.txtPassword.Text, this.txtName.Text, this.txtCareer.Text));
+            MessageBox.Show($"El usuario fue creado satisfactoriamente \n Su id es: {id}", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
+            Form1 f1 = new Form1();
+            f1.ShowDialog();
+            this.Close();
         } 
-        private void TxtEnrollment_TextChanged(object sender, EventArgs e)
-        {
-            int id;
-
-            if (!Int32.TryParse(this.txtEnrollment.Text, out id))
-            {
-                errorProvider1.SetError(txtEnrollment, "No puede haber caracteres en el id.");
-                txtEnrollment.Clear();
-
-            }
-            else
-                errorProvider1.Clear();
-
-            UpdateButton();
-
-        }
 
         private void TxtName_TextChanged(object sender, EventArgs e)
         {
@@ -72,7 +51,7 @@ namespace FTSE_FINAL_PROJECT
         private void UpdateButton()
         {
             int num;
-            btnSignUp.Enabled = Int32.TryParse(txtEnrollment.Text, out num) && txtName.Text.Length >= 3 && 
+            btnSignUp.Enabled = txtName.Text.Length >= 3 && 
                                (txtPassword.Text.Equals(txtPasswordConfirm.Text) && !string.IsNullOrEmpty(txtPassword.Text))
                                 && !string.IsNullOrEmpty(txtCareer.Text);
 

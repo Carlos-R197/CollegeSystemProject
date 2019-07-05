@@ -17,37 +17,29 @@ namespace FTSE_FINAL_PROJECT
         {
             InitializeComponent();
             Estudiante.CrearArchivo();
-        }     
+        }
 
         private void BtnJoin_Click(object sender, EventArgs e)
         {
-            //try
-           // {
-                if (Estudiante.VerificarEstudianteExiste(Int32.Parse(this.txtEnrollment.Text), this.txtPassword.Text))
-                {
-                    this.Hide();
-                    UserInterface F3 = new UserInterface();
-                    F3.ObtenerDataUser(txtEnrollment.Text);
-                    F3.ShowDialog();
-                    this.Close();
-                }
+            if (Estudiante.VerificarEstudianteExiste(this.txtEnrollment.Text, this.txtPassword.Text))
+            {
+                this.Hide();
+                UserInterface F3 = new UserInterface();
+                F3.ObtenerDataUser(txtEnrollment.Text);
+                F3.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                if (!Estudiante.VerificarIdExiste(txtEnrollment.Text))
+                    MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else if (!Estudiante.VerificarPasswordExiste(txtPassword.Text))
+                    MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 else
-                {
-                    if (!Estudiante.VerificarIdExiste(Int32.Parse(txtEnrollment.Text)))
-                        MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    else if (!Estudiante.VerificarPasswordExiste(txtPassword.Text))
-                        MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    else
-                        MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Debe escribir su id para entrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            
+                    MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnSignUp_Click(object sender, EventArgs e)
@@ -58,19 +50,6 @@ namespace FTSE_FINAL_PROJECT
             this.Close();
         }
 
-        private void TxtEnrollment_TextChanged(object sender, EventArgs e)
-        {
-            int id;
 
-            if (!Int32.TryParse(this.txtEnrollment.Text, out id))
-            {
-                errorProvider1.SetError(txtEnrollment, "No pueden haber caracteres en el id.");
-                txtEnrollment.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
     }
 }

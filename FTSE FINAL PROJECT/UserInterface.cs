@@ -26,7 +26,7 @@ namespace FTSE_FINAL_PROJECT
         {
             foreach (Estudiante Estudiante in Estudiante.ObtenerListaEstudiantes())
             {
-                if (Estudiante.ID == Convert.ToInt32(id))
+                if (Estudiante.ID.Equals(id))
                 {
                     ActualEstudiante = Estudiante;
                     break;

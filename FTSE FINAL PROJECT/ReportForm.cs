@@ -17,19 +17,19 @@ namespace FTSE_FINAL_PROJECT
         private decimal Grade;
         private decimal totalMult;
         private int totalCred;
-        private int idEstudiante;
+        private string idEstudiante;
         public ReportForm()
         {
             InitializeComponent();
             this.CenterToScreen();
         }
 
-        public void GetId(int id)
+        public void GetId(string id)
         {
             idEstudiante = id;
         }
 
-        private void TakeAllData(int id)
+        private void TakeAllData(string id)
         {
             List<Trimestre> trimestres = RegistroManager.ObtenerTodosRegistros(id);
 

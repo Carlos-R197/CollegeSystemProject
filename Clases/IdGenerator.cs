@@ -6,15 +6,17 @@ namespace Clases
 {
     static class IdGenerator
     {
-        public static int GenerarIdEstudiante()
+        public static string GenerarIdEstudiante()
         {
-            int id = 1000000;
-            List<Estudiante> estudiantes = Estudiante.ObtenerListaEstudiantes();
-            foreach (Estudiante est in estudiantes)
+            string id = "001-" + DateTime.Now.Year + "-";
+            int counter = 1;
+
+            foreach (Estudiante est in Estudiante.ObtenerListaEstudiantes())
             {
-                id++;
+                counter++;
             }
 
+            id += counter.ToString().PadLeft(4, '0');
             return id;
         }
     }

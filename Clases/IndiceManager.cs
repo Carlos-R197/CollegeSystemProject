@@ -71,7 +71,7 @@ namespace Clases
 
             return honor;
         }
-        public static decimal ObtenerIndiceAcumulado(int id)
+        public static decimal ObtenerIndiceAcumulado(string id)
         {
             List<decimal> indices = new List<decimal>();
             decimal valor, totalPuntos = 0;
@@ -91,7 +91,7 @@ namespace Clases
             }
             return indices.Average(); 
         }
-        public static decimal ObtenerIndiceTrimestre(int id, int trimestre)
+        public static decimal ObtenerIndiceTrimestre(string id, int trimestre)
         {
             decimal valor, totalPuntos = 0;
             short totalCreditos = 0;
