@@ -51,6 +51,10 @@ namespace Clases
             {
                 if (id.Equals(est.ID))
                 {
+                    //Antes de remover al estudiante de la lista ponlo en el archivo de estudiantes borrados.
+                    string filePath = Environment.CurrentDirectory + "\\Estudiantes_temp.csv";
+                    File.AppendAllText(filePath, id + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
+
                     estudiantes.Remove(est);
                     CrearArchivo();
                     for (int i = 0; i < estudiantes.Count; i++)

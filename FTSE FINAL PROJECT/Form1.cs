@@ -17,6 +17,7 @@ namespace FTSE_FINAL_PROJECT
         {
             InitializeComponent();
             Estudiante.CrearArchivo();
+            Profesor.CrearArchivo();
         }
 
         private void BtnJoin_Click(object sender, EventArgs e)
