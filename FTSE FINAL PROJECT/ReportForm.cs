@@ -47,11 +47,12 @@ namespace FTSE_FINAL_PROJECT
 
                 decimal indice = totalMult / totalCred;
 
-                ThisListBox.Items.Add($"Su indice trimestral es: {indice}");
+                ThisListBox.Items.Add($"Su indice trimestral es: {Decimal.Round(indice, 2)}");
             }
 
+            decimal indiceAcumulado = Decimal.Round(IndiceManager.ObtenerIndiceAcumulado(id), 2);
             ThisListBox.Items.Add("");
-            ThisListBox.Items.Add($"Su indice general es: {IndiceManager.ObtenerIndiceAcumulado(id)}");
+            ThisListBox.Items.Add($"Su indice general es: {indiceAcumulado} {IndiceManager.Honor(indiceAcumulado)}");
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)

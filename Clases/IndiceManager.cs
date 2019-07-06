@@ -56,15 +56,15 @@ namespace Clases
         {
             return puntos / creditos;
         }
-        public static string Honor(float indice)
+        public static string Honor(decimal indice)
         {
             string honor;
 
-            if (indice >= 3.8f)
+            if (indice >= 3.8m)
                 honor = "Summa Cum Laude";
-            else if (indice >= 3.5f)
+            else if (indice >= 3.5m)
                 honor = "Magna Cum Laude";
-            else if (indice >= 3.2f)
+            else if (indice >= 3.2m)
                 honor = "Cum Laude";
             else
                 honor = "Sin honor";

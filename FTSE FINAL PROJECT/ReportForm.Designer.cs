@@ -35,13 +35,14 @@
             // 
             // ThisListBox
             // 
+            this.ThisListBox.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ThisListBox.FormattingEnabled = true;
-            this.ThisListBox.ItemHeight = 16;
+            this.ThisListBox.ItemHeight = 31;
             this.ThisListBox.Location = new System.Drawing.Point(3, 15);
             this.ThisListBox.Margin = new System.Windows.Forms.Padding(4);
             this.ThisListBox.Name = "ThisListBox";
             this.ThisListBox.ScrollAlwaysVisible = true;
-            this.ThisListBox.Size = new System.Drawing.Size(1064, 516);
+            this.ThisListBox.Size = new System.Drawing.Size(1064, 500);
             this.ThisListBox.TabIndex = 0;
             // 
             // btnAlright
