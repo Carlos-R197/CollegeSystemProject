@@ -89,13 +89,14 @@ namespace Clases
 
             for (int i = 0; i < files.Length; i++)
             {
-                lineas = File.ReadAllLines(filePath + "\\" + "Trimestre"+(i+1)+".csv");
+                lineas = File.ReadAllLines(filePath);
                 for (int j = 1; j < lineas.Length; j++)
                 {
-                    data = lineas[i+1].Split(',');
-                    reg.Add(new Registro(data[0], data[1], short.Parse(data[2])));
+                    data = lineas[i].Split(',');
+                    reg.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
                 }
-                trimestres.Add(new Trimestre(reg, (i + 1)));
+                trimestres[i].Registros.AddRange(reg);
+                trimestres[i].NumTrimestre = i + 1;
             }
 
             return trimestres;

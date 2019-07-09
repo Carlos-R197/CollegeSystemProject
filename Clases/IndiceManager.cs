@@ -5,20 +5,20 @@ using System.Text;
 
 namespace Clases
 {
-    public class IndiceManager
+    class IndiceManager
     {
 
-        public static decimal TransformarEnValor(short nota)
+        private static float TransformarEnValor(short nota)
         {
-            decimal valor;
+            float valor;
             if (nota >= 90 && nota < 101 )
                 valor = 4;
             else if (nota >= 85 && nota < 90)
-                valor = 3.5M;
+                valor = 3.5f;
             else if (nota >= 80 && nota < 85)
                 valor = 3;
             else if (nota >= 75 && nota < 80)
-                valor = 2.5M;
+                valor = 2.5f;
             else if (nota >= 70 && nota < 75)
                 valor = 2;
             else if (nota >= 60)
@@ -29,7 +29,7 @@ namespace Clases
             return valor;
         }
 
-        public static decimal TransformarEnPuntosHonor(decimal valor, short creditos)
+        private static float TransformarEnPuntosHonor(float valor, short creditos)
         {
             return valor * creditos;
         }
@@ -46,7 +46,7 @@ namespace Clases
             return suma;
         }
 
-        public static decimal ObtenerIndice(decimal puntos, short creditos)
+        private static float ObtenerIndice(float puntos, short creditos)
         {
             return puntos / creditos;
         }
@@ -67,10 +67,10 @@ namespace Clases
             return honor;
         }
 
-        public static decimal ObtenerIndiceAcumulado(int id)
+        public static float ObtenerIndiceAcumulado(int id)
         {
-            List<decimal> indices = new List<decimal>();
-            decimal valor, totalPuntos = 0;
+            List<float> indices = new List<float>();
+            float valor, totalPuntos = 0;
             short totalCreditos = 0;
 
             List<Trimestre> trimestres = RegistroManager.ObtenerTodosRegistros(id);
@@ -85,12 +85,12 @@ namespace Clases
                 }
                 indices.Add(ObtenerIndice(totalPuntos, totalCreditos));
             }
-            return indices.Average(); 
+            return indices.Average(); ;
         }
 
-        public static decimal ObtenerIndiceTrimestre(int id, int trimestre)
+        public static float ObtenerIndiceTrimestre(int id, int trimestre)
         {
-            decimal valor, totalPuntos = 0;
+            float valor, totalPuntos = 0;
             short totalCreditos = 0;
 
             List<Registro> registros = RegistroManager.ObtenerRegistrosTrimestre(id, trimestre);

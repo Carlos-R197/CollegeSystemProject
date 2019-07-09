@@ -149,12 +149,14 @@ namespace FTSE_FINAL_PROJECT
             ModifyListViewData();
         }
 
+        private void BtnNewPeriod_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void BtnWatchReport_Click(object sender, EventArgs e)
         {
-            ReportForm F = new ReportForm();
-            F.GetId(ActualEstudiante.ID);
-            F.ShowDialog();
-            this.Close();
+
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
