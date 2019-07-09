@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CrystalDecisions.CrystalReports;
 using Clases;
 
 namespace FTSE_FINAL_PROJECT
@@ -18,28 +17,54 @@ namespace FTSE_FINAL_PROJECT
         {
             InitializeComponent();
             Estudiante.CrearArchivo();
-        }     
+            Profesor.CrearArchivo();
+        }
 
         private void BtnJoin_Click(object sender, EventArgs e)
         {
-            if (Estudiante.VerificarEstudianteExiste(Int32.Parse(this.txtEnrollment.Text), this.txtPassword.Text))
+            if (txtEnrollment.Text.StartsWith("1"))
             {
-                this.Hide();
-                UserInterface F3 = new UserInterface();
-                F3.ObtenerDataUser(txtEnrollment.Text);
-                F3.ShowDialog();
-                this.Close();
+                if (Estudiante.VerificarEstudianteExiste(this.txtEnrollment.Text, this.txtPassword.Text))
+                {
+                    AbrirUserInterface();
+                }
+                else
+                {
+                    if (!Estudiante.VerificarIdExiste(txtEnrollment.Text))
+                        MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    else if (!Estudiante.VerificarPasswordExiste(txtPassword.Text))
+                        MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    else
+                        MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (txtEnrollment.Text.StartsWith("2"))
+            {
+                if (Profesor.VerificarProfesorExiste(this.txtEnrollment.Text, this.txtPassword.Text))
+                {
+                    this.Hide();
+                    ProfesorInterface F3 = new ProfesorInterface();
+                    F3.ObtenerDataUser(txtEnrollment.Text);
+                    F3.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    if (!Profesor.VerificarIdExiste(txtEnrollment.Text))
+                        MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    else if (!Profesor.VerificarPasswordExiste(txtPassword.Text))
+                        MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    else
+                        MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                if (!Estudiante.VerificarIdExiste(Int32.Parse(txtEnrollment.Text)))
-                    MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                else if (!Estudiante.VerificarPasswordExiste(txtPassword.Text))
-                    MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                else
-                    MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -51,19 +76,13 @@ namespace FTSE_FINAL_PROJECT
             this.Close();
         }
 
-        private void TxtEnrollment_TextChanged(object sender, EventArgs e)
+        private void AbrirUserInterface()
         {
-            int id;
-
-            if (!Int32.TryParse(this.txtEnrollment.Text, out id))
-            {
-                errorProvider1.SetError(txtEnrollment, "No pueden haber caracteres en el id.");
-                txtEnrollment.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
+            this.Hide();
+            UserInterface F3 = new UserInterface();
+            F3.ObtenerDataUser(txtEnrollment.Text);
+            F3.ShowDialog();
+            this.Close();
         }
     }
 }

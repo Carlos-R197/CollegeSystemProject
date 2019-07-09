@@ -10,7 +10,7 @@ namespace Clases
         public static List<Registro> registros = new List<Registro>();
 
         //Guarda la informacion de los registros basado en el Trimestre
-        public static int GuardarTrimestreEspecifico(int idEstudiante, int trimestre)
+        public static int GuardarTrimestreEspecifico(string idEstudiante, int trimestre)
         {
             //Carpeta donde se guardara la informacion del estudiante por trimestre
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
@@ -32,7 +32,7 @@ namespace Clases
 
             return PeriodValue;
         }
-        public static int GuardarTrimestre(int idEstudiante)
+        public static int GuardarTrimestre(string idEstudiante)
         {
             //Carpeta donde se guardara la informacion del estudiante por trimestre
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
@@ -57,7 +57,7 @@ namespace Clases
             string[] files = Directory.GetFiles(directorio, "*.csv");
             return files.Length;
         }
-        public static string ObtenerPathDeArchivo(int id, int trimestre)
+        public static string ObtenerPathDeArchivo(string id, int trimestre)
         {
            string path = Environment.CurrentDirectory + "\\" + id + "\\" + "Trimestre" + trimestre + ".csv";
            return path;
@@ -77,31 +77,29 @@ namespace Clases
 
             registros = regs;
         }
-
-        public static List<Trimestre> ObtenerTodosRegistros(int idEstudiante)
+        public static List<Trimestre> ObtenerTodosRegistros(string idEstudiante)
         {
             string filePath = Environment.CurrentDirectory + "\\" + idEstudiante;
             string[] files = Directory.GetFiles(filePath, "*.csv");
             string[] lineas;
             string[] data;
-            List<Registro> reg = new List<Registro>();
             List<Trimestre> trimestres = new List<Trimestre>();
 
             for (int i = 0; i < files.Length; i++)
             {
-                lineas = File.ReadAllLines(filePath);
+                lineas = File.ReadAllLines(filePath + "\\" + "Trimestre"+(i+1)+".csv");
+                List<Registro> reg = new List<Registro>();
                 for (int j = 1; j < lineas.Length; j++)
                 {
-                    data = lineas[i].Split(',');
-                    reg.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
+                    data = lineas[j].Split(',');
+                    reg.Add(new Registro(data[0], data[1], short.Parse(data[2])));
                 }
-                trimestres[i].Registros.AddRange(reg);
-                trimestres[i].NumTrimestre = i + 1;
+                trimestres.Add(new Trimestre(reg, (i + 1)));
             }
 
             return trimestres;
         }
-        public static List<Registro> ObtenerRegistrosTrimestre(int id, int trimestre)
+        public static List<Registro> ObtenerRegistrosTrimestre(string id, int trimestre)
         {
             List<Registro> registros = new List<Registro>();
             string filePath = Environment.CurrentDirectory + "\\" + id;

@@ -12,11 +12,11 @@ using System.IO;
 
 namespace FTSE_FINAL_PROJECT
 {
-    public partial class UserInterface : Form
+    public partial class ProfesorInterface : Form
     {
-        private Estudiante ActualEstudiante;
+        private Profesor ActualProfesor;
 
-        public UserInterface()
+        public ProfesorInterface()
         {
             InitializeComponent();
         }
@@ -24,38 +24,30 @@ namespace FTSE_FINAL_PROJECT
         //Obtiene la data del usuario/objeto estudiante que se logueo y la asigna al objeto ActualEstudiante
         public void ObtenerDataUser(string id)
         {
-            foreach (Estudiante Estudiante in Estudiante.ObtenerListaEstudiantes())
+            foreach (Profesor profesor in Profesor.ObtenerListaProfesores())
             {
-                if (Estudiante.ID.Equals(id))
+                if (profesor.Id.Equals(id))
                 {
-                    ActualEstudiante = Estudiante;
+                    ActualProfesor = profesor;
                     break;
                 }
             }
 
-            labelName.Text = ActualEstudiante.Nombre;
-            labelCareer.Text = ActualEstudiante.Carrera;
-            labelNumTrismestre.Text = "1";
-
-            string pathUsuario = Environment.CurrentDirectory + "\\" + id;
-            if (RegistroManager.DeterminarCantidadArchivos(pathUsuario) > 0)
-            {
-                pathUsuario += "\\Trimestre" + labelNumTrismestre.Text + ".csv";
-                RegistroManager.LlenarListaRegistro(pathUsuario);
-                AddData();
-            }
+            labelName.Text = ActualProfesor.Nombre;
+            AddData();
         }
         //Agrega toda la data disponible en la lista de registros al ListView
+        //ESTO TIENE QUE CAMBIAR
         public void AddData()
         {
             ThisListView.Items.Clear();
 
-            foreach (Registro registro in RegistroManager.registros)
+            foreach (Estudiante est in Estudiante.ObtenerListaEstudiantes())
             {
-                ListViewItem a = ThisListView.Items.Add(registro.subject);
+                ListViewItem a = ThisListView.Items.Add(est.ID);
 
-                a.SubItems.Add(registro.credValue);
-                a.SubItems.Add(IndiceManager.TransformarEnLetra(registro.grade));
+                a.SubItems.Add(est.Nombre);
+                a.SubItems.Add(est.Carrera);
             }
         }
         //Muestra el formulario para agregar una nueva asignatura
@@ -68,7 +60,7 @@ namespace FTSE_FINAL_PROJECT
         //Accede al archivo del trimestre para reescribirlo
         public void ModifyPeriod()
         {
-            int numTrimestres = RegistroManager.DeterminarCantidadArchivos(Environment.CurrentDirectory + "\\" + ActualEstudiante.ID);
+            int numTrimestres = RegistroManager.DeterminarCantidadArchivos(Environment.CurrentDirectory + "\\" + ActualProfesor.Id);
             try
             {
                 if (Int32.Parse(txtTrimester.Text) > numTrimestres || Int32.Parse(txtTrimester.Text) < 0)
@@ -78,7 +70,7 @@ namespace FTSE_FINAL_PROJECT
                 }
                 else
                 {
-                    string path = RegistroManager.ObtenerPathDeArchivo(ActualEstudiante.ID, Int32.Parse(txtTrimester.Text));
+                    string path = RegistroManager.ObtenerPathDeArchivo(ActualProfesor.Id, Int32.Parse(txtTrimester.Text));
                     RegistroManager.registros.Clear();
                     string[] lineas = File.ReadAllLines(path);
                     string[] data;
@@ -88,7 +80,7 @@ namespace FTSE_FINAL_PROJECT
                         RegistroManager.registros.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
                     }
                     AddData();
-                    labelNumTrismestre.Text = txtTrimester.Text;
+                    //labelNumTrismestre.Text = txtTrimester.Text;
                     txtTrimester.Text = string.Empty;
                 }
             }
@@ -129,12 +121,12 @@ namespace FTSE_FINAL_PROJECT
         //BOTON para guardar los registros del listview en un archivo de trimestres e informarle al usuario
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            int trimestreActual = Int32.Parse(labelNumTrismestre.Text);
-            int PeriodValue = RegistroManager.GuardarTrimestreEspecifico(ActualEstudiante.ID, trimestreActual);
+            //int trimestreActual = Int32.Parse(labelNumTrismestre.Text);
+            //int PeriodValue = RegistroManager.GuardarTrimestreEspecifico(ActualProfesor.Id, trimestreActual);
 
-            MessageBox.Show($"El trimestre {PeriodValue} ha sido guardado con exito", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show($"El trimestre {PeriodValue} ha sido guardado con exito", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ThisListView.Items.Clear();
-            labelNumTrismestre.Text = (RegistroManager.DeterminarCantidadArchivos(ActualEstudiante.ID.ToString()) + 1).ToString();
+            //labelNumTrismestre.Text = (RegistroManager.DeterminarCantidadArchivos(ActualProfesor.Id.ToString()) + 1).ToString();
         }
 
         //BOTON para modificar el archivo del trimestre seleccionado
@@ -152,7 +144,7 @@ namespace FTSE_FINAL_PROJECT
         private void BtnWatchReport_Click(object sender, EventArgs e)
         {
             ReportForm F = new ReportForm();
-            F.GetId(ActualEstudiante.ID);
+            F.GetId(ActualProfesor.Id);
             F.ShowDialog();
         }
 
@@ -163,5 +155,27 @@ namespace FTSE_FINAL_PROJECT
             f.ShowDialog();
             this.Close();
         }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Esta seguro de que desea eliminar al estudiante?", "Importante", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
+                {
+                    Estudiante.EliminarEstudiante(ThisListView.SelectedItems[0].Text);
+                }
+                else if (result == DialogResult.No)
+                {
+                    //no...
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar algo para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

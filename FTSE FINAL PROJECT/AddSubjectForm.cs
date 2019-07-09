@@ -16,17 +16,20 @@ namespace FTSE_FINAL_PROJECT
         public AddSubjectForm()
         {
             InitializeComponent();
+            this.CenterToScreen();
+            btnSave.Enabled = false;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Registro NuevoRegistro = new Registro(txtSubject.Text, txtCred.Text, Int16.Parse(txtGrade.Text));
-
+            Registro NuevoRegistro = new Registro(txtSubject.Text, txtCred.Text, short.Parse(txtGrade.Text));
             RegistroManager.registros.Add(NuevoRegistro);
 
             txtSubject.Clear();
             txtCred.Clear();
             txtGrade.Clear();
             this.Close();
+
+            txtGrade.Clear();
         }
         private void TxtCred_TextChanged(object sender, EventArgs e)
         {
@@ -39,6 +42,7 @@ namespace FTSE_FINAL_PROJECT
             }
             else
                 errorProvider1.Clear();
+            UpdateButton();
         }
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -48,13 +52,28 @@ namespace FTSE_FINAL_PROJECT
         {
             short grade;
             //Si grado no es un numero entre 0 y 100 tirar error.
-            if (!Int16.TryParse(this.txtCred.Text, out grade) || Int16.Parse(txtGrade.Text) > 100 || Int16.Parse(txtGrade.Text) < 0)
+            if (!Int16.TryParse(this.txtGrade.Text, out grade))
             {
-                errorProvider1.SetError(txtCred, "El grado debe un numero entre 0 y 100.");
-                txtCred.Clear();
+                if (grade > 100 || grade < 0)
+                    errorProvider1.SetError(txtGrade, "El grado debe un numero entre 0 y 100.");
+                txtGrade.Clear();
             }
             else
                 errorProvider1.Clear();
+            UpdateButton();
+        }
+        private void TxtSubject_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSubject.Text == string.Empty)
+                errorProvider1.SetError(txtSubject, "Debe escribir la asignatura");
+            else
+                errorProvider1.Clear();
+            UpdateButton();
+        }
+        private void UpdateButton()
+        {
+            int num, grade;
+            btnSave.Enabled = txtSubject.Text != string.Empty && Int32.TryParse(txtCred.Text, out num) && (Int32.TryParse(txtGrade.Text, out grade) && !(grade > 100));
         }
     }
 }

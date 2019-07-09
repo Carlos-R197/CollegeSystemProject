@@ -84,6 +84,7 @@
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(263, 26);
             this.txtSubject.TabIndex = 2;
+            this.txtSubject.TextChanged += new System.EventHandler(this.TxtSubject_TextChanged);
             // 
             // txtCred
             // 

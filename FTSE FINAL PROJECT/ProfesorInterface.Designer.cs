@@ -1,7 +1,7 @@
 ﻿
 namespace FTSE_FINAL_PROJECT
 {
-    partial class UserInterface
+    partial class ProfesorInterface
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,10 @@ namespace FTSE_FINAL_PROJECT
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfesorInterface));
             this.labelName = new System.Windows.Forms.Label();
             this.labelCareer = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelNumTrismestre = new System.Windows.Forms.Label();
             this.btnWatchReport = new System.Windows.Forms.Button();
             this.ThisListView = new System.Windows.Forms.ListView();
             this.Asignatura = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,6 +48,7 @@ namespace FTSE_FINAL_PROJECT
             this.txtTrimester = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,9 +56,10 @@ namespace FTSE_FINAL_PROJECT
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(12, 102);
+            this.labelName.Location = new System.Drawing.Point(16, 126);
+            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(285, 24);
+            this.labelName.Size = new System.Drawing.Size(359, 29);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "John Marcos Espinal Hernandez";
             // 
@@ -68,58 +67,30 @@ namespace FTSE_FINAL_PROJECT
             // 
             this.labelCareer.AutoSize = true;
             this.labelCareer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCareer.Location = new System.Drawing.Point(103, 146);
+            this.labelCareer.Location = new System.Drawing.Point(137, 180);
+            this.labelCareer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCareer.Name = "labelCareer";
-            this.labelCareer.Size = new System.Drawing.Size(197, 24);
+            this.labelCareer.Size = new System.Drawing.Size(0, 29);
             this.labelCareer.TabIndex = 0;
-            this.labelCareer.Text = "Ingenieria de Software";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 146);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 24);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Carrera:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(42, 32);
+            this.label3.Location = new System.Drawing.Point(56, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(630, 24);
+            this.label3.Size = new System.Drawing.Size(786, 29);
             this.label3.TabIndex = 0;
             this.label3.Text = "BIENVENIDO AL SISTEMA DE CALCULO DE INDICE ACADEMICO";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 229);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 24);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Trimestre:";
-            // 
-            // labelNumTrismestre
-            // 
-            this.labelNumTrismestre.AutoSize = true;
-            this.labelNumTrismestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumTrismestre.Location = new System.Drawing.Point(122, 229);
-            this.labelNumTrismestre.Name = "labelNumTrismestre";
-            this.labelNumTrismestre.Size = new System.Drawing.Size(20, 24);
-            this.labelNumTrismestre.TabIndex = 0;
-            this.labelNumTrismestre.Text = "1";
             // 
             // btnWatchReport
             // 
             this.btnWatchReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWatchReport.Location = new System.Drawing.Point(70, 295);
+            this.btnWatchReport.Location = new System.Drawing.Point(93, 363);
+            this.btnWatchReport.Margin = new System.Windows.Forms.Padding(4);
             this.btnWatchReport.Name = "btnWatchReport";
-            this.btnWatchReport.Size = new System.Drawing.Size(126, 44);
+            this.btnWatchReport.Size = new System.Drawing.Size(168, 54);
             this.btnWatchReport.TabIndex = 1;
             this.btnWatchReport.Text = "Ver Reporte Academico";
             this.btnWatchReport.UseVisualStyleBackColor = true;
@@ -134,9 +105,10 @@ namespace FTSE_FINAL_PROJECT
             this.ThisListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ThisListView.FullRowSelect = true;
             this.ThisListView.HideSelection = false;
-            this.ThisListView.Location = new System.Drawing.Point(303, 102);
+            this.ThisListView.Location = new System.Drawing.Point(404, 126);
+            this.ThisListView.Margin = new System.Windows.Forms.Padding(4);
             this.ThisListView.Name = "ThisListView";
-            this.ThisListView.Size = new System.Drawing.Size(529, 336);
+            this.ThisListView.Size = new System.Drawing.Size(704, 413);
             this.ThisListView.TabIndex = 2;
             this.ThisListView.UseCompatibleStateImageBehavior = false;
             this.ThisListView.View = System.Windows.Forms.View.Details;
@@ -159,9 +131,10 @@ namespace FTSE_FINAL_PROJECT
             // btnAddSubject
             // 
             this.btnAddSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddSubject.Location = new System.Drawing.Point(282, 444);
+            this.btnAddSubject.Location = new System.Drawing.Point(344, 548);
+            this.btnAddSubject.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSubject.Name = "btnAddSubject";
-            this.btnAddSubject.Size = new System.Drawing.Size(128, 29);
+            this.btnAddSubject.Size = new System.Drawing.Size(171, 36);
             this.btnAddSubject.TabIndex = 3;
             this.btnAddSubject.Text = "Agregar materia";
             this.btnAddSubject.UseVisualStyleBackColor = true;
@@ -170,9 +143,10 @@ namespace FTSE_FINAL_PROJECT
             // btnModify
             // 
             this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModify.Location = new System.Drawing.Point(535, 444);
+            this.btnModify.Location = new System.Drawing.Point(643, 548);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(4);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(84, 29);
+            this.btnModify.Size = new System.Drawing.Size(112, 36);
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
@@ -181,9 +155,10 @@ namespace FTSE_FINAL_PROJECT
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(757, 445);
+            this.btnCancel.Location = new System.Drawing.Point(1008, 548);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 29);
+            this.btnCancel.Size = new System.Drawing.Size(100, 36);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Salir";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -192,9 +167,10 @@ namespace FTSE_FINAL_PROJECT
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(640, 445);
+            this.btnSave.Location = new System.Drawing.Point(883, 548);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(88, 29);
+            this.btnSave.Size = new System.Drawing.Size(117, 36);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -203,9 +179,10 @@ namespace FTSE_FINAL_PROJECT
             // btnRefresh
             // 
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(430, 444);
+            this.btnRefresh.Location = new System.Drawing.Point(523, 548);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(84, 29);
+            this.btnRefresh.Size = new System.Drawing.Size(112, 36);
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Actualizar";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -214,9 +191,10 @@ namespace FTSE_FINAL_PROJECT
             // btnModifyTri
             // 
             this.btnModifyTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyTri.Location = new System.Drawing.Point(12, 444);
+            this.btnModifyTri.Location = new System.Drawing.Point(16, 546);
+            this.btnModifyTri.Margin = new System.Windows.Forms.Padding(4);
             this.btnModifyTri.Name = "btnModifyTri";
-            this.btnModifyTri.Size = new System.Drawing.Size(144, 29);
+            this.btnModifyTri.Size = new System.Drawing.Size(192, 36);
             this.btnModifyTri.TabIndex = 4;
             this.btnModifyTri.Text = "Ir al trimestre";
             this.btnModifyTri.UseVisualStyleBackColor = true;
@@ -225,9 +203,10 @@ namespace FTSE_FINAL_PROJECT
             // txtTrimester
             // 
             this.txtTrimester.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrimester.Location = new System.Drawing.Point(162, 445);
+            this.txtTrimester.Location = new System.Drawing.Point(216, 548);
+            this.txtTrimester.Margin = new System.Windows.Forms.Padding(4);
             this.txtTrimester.Name = "txtTrimester";
-            this.txtTrimester.Size = new System.Drawing.Size(65, 26);
+            this.txtTrimester.Size = new System.Drawing.Size(85, 30);
             this.txtTrimester.TabIndex = 5;
             // 
             // errorProvider1
@@ -237,18 +216,32 @@ namespace FTSE_FINAL_PROJECT
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 370);
+            this.label1.Location = new System.Drawing.Point(16, 455);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(270, 45);
+            this.label1.Size = new System.Drawing.Size(360, 55);
             this.label1.TabIndex = 6;
             this.label1.Text = "De los trimestres que ha guardado, puede modificar el que desee agregando su nume" +
     "ro y presionando el boton:";
             // 
-            // UserInterface
+            // btnDelete
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(763, 548);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(112, 36);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // ProfesorInterface
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 495);
+            this.ClientSize = new System.Drawing.Size(1129, 609);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTrimester);
             this.Controls.Add(this.btnModifyTri);
@@ -259,16 +252,14 @@ namespace FTSE_FINAL_PROJECT
             this.Controls.Add(this.btnAddSubject);
             this.Controls.Add(this.ThisListView);
             this.Controls.Add(this.btnWatchReport);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelNumTrismestre);
             this.Controls.Add(this.labelCareer);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "UserInterface";
+            this.Name = "ProfesorInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CALCULO DE INDICE ACADEMICO";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -281,10 +272,7 @@ namespace FTSE_FINAL_PROJECT
 
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelCareer;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labelNumTrismestre;
         private System.Windows.Forms.Button btnWatchReport;
         private System.Windows.Forms.ColumnHeader Asignatura;
         private System.Windows.Forms.ColumnHeader CantCreditos;
@@ -299,5 +287,6 @@ namespace FTSE_FINAL_PROJECT
         private System.Windows.Forms.ListView ThisListView;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
