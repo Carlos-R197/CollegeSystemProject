@@ -36,6 +36,13 @@ namespace Clases
                 File.AppendAllText(filePath, "ID" + "," + "Nombre" + "," + "Carrera" + "," + "Password" + Environment.NewLine);
             }
         }
+        private static void ReescribirArchivo()
+        {
+            string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
+
+            File.WriteAllText(filePath, "ID" + "," + "Nombre" + "," + "Carrera" + "," + "Password" + Environment.NewLine);
+
+        }
         public static string AñadirEstudiante(Estudiante est)
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
@@ -56,11 +63,12 @@ namespace Clases
                     File.AppendAllText(filePath, id + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
 
                     estudiantes.Remove(est);
-                    CrearArchivo();
+                    ReescribirArchivo();
                     for (int i = 0; i < estudiantes.Count; i++)
                     {
                         AñadirEstudiante(est);
                     }
+                    break;
                 }
 
             }

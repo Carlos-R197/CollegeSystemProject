@@ -78,6 +78,12 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfesorInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorInterface.Designer.cs">
+      <DependentUpon>ProfesorInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </Compile>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorInterface.resx">
+      <DependentUpon>ProfesorInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface.resx">
       <DependentUpon>UserInterface.cs</DependentUpon>

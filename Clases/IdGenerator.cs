@@ -8,7 +8,7 @@ namespace Clases
     {
         public static string GenerarIdEstudiante()
         {
-            string id = "001-" + DateTime.Now.Year + "-";
+            string id = "1-" + DateTime.Now.Year + "-";
             int counter = 1;
 
             foreach (Estudiante est in Estudiante.ObtenerListaEstudiantes())
@@ -22,7 +22,7 @@ namespace Clases
 
         public static string GenerarIdProfesor()
         {
-            string id = "002-" + DateTime.Now.Year + "-";
+            string id = "2-" + DateTime.Now.Year + "-";
             int counter = 1;
 
             foreach (Profesor pro in Profesor.ObtenerListaProfesores())

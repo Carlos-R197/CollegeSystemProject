@@ -17,15 +17,33 @@ namespace FTSE_FINAL_PROJECT
         {
             InitializeComponent();
             btnSignUp.Enabled = false;
+            ComboItem[] combo =
+            {
+                new ComboItem {ID = 1, Text = "Estudiante" },
+                new ComboItem {ID = 2, Text = "Profesor" }
+            };
+            myCombo.DataSource = combo;
         }
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
-            string id = Estudiante.AñadirEstudiante(new Estudiante(this.txtPassword.Text, this.txtName.Text, this.txtCareer.Text));
-            MessageBox.Show($"El usuario fue creado satisfactoriamente \n Su id es: {id}", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Hide();
-            Form1 f1 = new Form1();
-            f1.ShowDialog();
-            this.Close();
+            if ((int) myCombo.SelectedValue == 1)
+            {
+                string id = Estudiante.AñadirEstudiante(new Estudiante(this.txtPassword.Text, this.txtName.Text, this.txtCareer.Text));
+                MessageBox.Show($"El usuario fue creado satisfactoriamente \n Su id es: {id}", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                Form1 f1 = new Form1();
+                f1.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                string id = Profesor.AñadirProfesor(new Profesor(this.txtName.Text, this.txtPassword.Text));
+                MessageBox.Show($"El usuario fue creado satisfactoriamente \n Su id es: {id}", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                Form1 f1 = new Form1();
+                f1.ShowDialog();
+                this.Close();
+            }
         } 
 
         private void TxtName_TextChanged(object sender, EventArgs e)

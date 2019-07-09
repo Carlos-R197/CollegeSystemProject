@@ -35,7 +35,7 @@ namespace Clases
         public static string AñadirProfesor(Profesor pro)
         {
             string filePath = Environment.CurrentDirectory + "\\Profesores.csv";
-            string id = IdGenerator.GenerarIdEstudiante();
+            string id = IdGenerator.GenerarIdProfesor();
             File.AppendAllText(filePath, id + "," + pro.Nombre + "," + pro.Password + Environment.NewLine);
             Directory.CreateDirectory(Environment.CurrentDirectory + "\\" + id);
             return id;
