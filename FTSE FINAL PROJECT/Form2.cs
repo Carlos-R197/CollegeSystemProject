@@ -68,7 +68,7 @@ namespace FTSE_FINAL_PROJECT
 
         private void UpdateButton()
         {
-            int num;
+            //int num;
             btnSignUp.Enabled = txtName.Text.Length >= 3 && 
                                (txtPassword.Text.Equals(txtPasswordConfirm.Text) && !string.IsNullOrEmpty(txtPassword.Text))
                                 && !string.IsNullOrEmpty(txtCareer.Text);
