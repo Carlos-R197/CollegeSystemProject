@@ -44,12 +44,9 @@ namespace FTSE_FINAL_PROJECT
 
             labelName.Text = ActualProfesor.Nombre;
 
-            ComboItem[] combo =
-{
-                new ComboItem {ID = 1, Text = "Calculo Diferencial" },
-                new ComboItem {ID = 2, Text = "Calculo Integral" }
-            };
-            comboBoxAsig.DataSource = combo;
+            //comboBoxAsig.DataSource = combo;
+            //comboBoxAsig.Items.Add("Calculo Diferencial");
+           // comboBoxAsig.Items.Add("Calculo Integral");
         }
         //Agrega al list view los estudiantes existentes
         public void AddData()
@@ -63,6 +60,20 @@ namespace FTSE_FINAL_PROJECT
                 a.SubItems.Add(est.Nombre);
             }
         }
+
+        public string ConseguirIDEstudiante(string nombre)
+        {
+            string id = "";
+            foreach (Estudiante est in Estudiante.ObtenerListaEstudiantes())
+            {
+                if (est.Nombre.Equals(nombre))
+                {
+                    id = est.ID;
+                }
+            }
+
+            return id;
+        }
         //Accede al archivo del trimestre para reescribirlo
         public void ModifyPeriod()
         {
@@ -74,22 +85,6 @@ namespace FTSE_FINAL_PROJECT
             catch
             {
                 MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        //Modificar un registro en el listview
-        public void ModifyListViewData()
-        {
-            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
-            {
-                ModifySubjectForm f = new ModifySubjectForm(ThisListView.SelectedItems[0].SubItems[0].Text,
-                                                            ThisListView.SelectedItems[0].SubItems[1].Text,
-                                                            ThisListView.SelectedItems[0].SubItems[2].Text);
-                f.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar algo para modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -125,52 +120,80 @@ namespace FTSE_FINAL_PROJECT
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
+            try
             {
-                DialogResult result = MessageBox.Show("Esta seguro de que desea eliminar al estudiante?", "Importante", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (result == DialogResult.Yes)
+                if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
                 {
-                    ActualSeccion.EliminarEstudiante(ThisListView.SelectedItems[0].Text);
-                    MostrarSeccionActual();
-                }
-                else if (result == DialogResult.No)
-                {
-                    //no...
-                }
+                    DialogResult result = MessageBox.Show("Esta seguro de que desea eliminar al estudiante?", "Importante", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        ActualSeccion.EliminarEstudiante(ThisListView.SelectedItems[0].Text);
+                        MostrarSeccionActual();
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        //no...
+                    }
 
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un estudiante eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Debe seleccionar un estudiante eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void BtnNewSec_Click(object sender, EventArgs e)
         {
-            ActualSeccion = new Seccion(ActualProfesor, comboBoxAsig.Text);
-            labelNumSec.Text = ActualSeccion.NumeroSeccion.ToString();
-            MostrarSeccionActual();
+            try
+            {
+                ActualSeccion = new Seccion(ActualProfesor, comboBoxAsig.Text);
+                labelNumSec.Text = ActualSeccion.NumeroSeccion.ToString();
+                MostrarSeccionActual();
+            }
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnAddStudent_Click(object sender, EventArgs e)
         {
-            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0 && estado == State.ViendoListaEst)
+            try
             {
-                ActualSeccion.AñadirEstudiante(ThisListView.SelectedItems[0].SubItems[1].Text);
-                MostrarSeccionActual();
+                if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0 && estado == State.ViendoListaEst)
+                {
+                    ActualSeccion.AñadirEstudiante(ThisListView.SelectedItems[0].SubItems[1].Text);
+                    MostrarSeccionActual();
+                }
+                else
+                    MessageBox.Show("Debe seleccionar un estudiante para añadir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Debe seleccionar un estudiante para añadir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ComboBoxAsig_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string filePath = Environment.CurrentDirectory + "\\" + ActualProfesor.Id + "\\" + comboBoxAsig.Text;
-            if (!Directory.Exists(filePath))
+            try
             {
-                Directory.CreateDirectory(filePath);
+                string filePath = Environment.CurrentDirectory + "\\" + ActualProfesor.Id + "\\" + comboBoxAsig.Text;
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                MostrarSeccionesExistentes();
             }
-            MostrarSeccionesExistentes();
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void MostrarSeccionesExistentes()
@@ -218,13 +241,20 @@ namespace FTSE_FINAL_PROJECT
 
         private void ThisListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (estado == State.ViendoSecciones)
+            try
             {
-                List<EstudianteSeccion> est = SeccionManager.ObtenerListaEstudiantes(comboBoxAsig.Text, ActualProfesor, Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text));
-                ActualSeccion = new Seccion(ActualProfesor, est, 
-                                Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text), ThisListView.SelectedItems[0].SubItems[1].Text);
-                MostrarSeccionActual();
-                estado = State.ViendoListaEstCal;
+                if (estado == State.ViendoSecciones)
+                {
+                    List<EstudianteSeccion> est = SeccionManager.ObtenerListaEstudiantes(comboBoxAsig.Text, ActualProfesor, Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text));
+                    ActualSeccion = new Seccion(ActualProfesor, est,
+                                    Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text), ThisListView.SelectedItems[0].SubItems[1].Text);
+                    MostrarSeccionActual();
+                    estado = State.ViendoListaEstCal;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -232,9 +262,16 @@ namespace FTSE_FINAL_PROJECT
         {
             if (estado == State.ViendoListaEstCal && ThisListView.SelectedItems.Count > 0 && ThisListView.Items.Count > 0)
             {
-                AddCalForm F = new AddCalForm(ActualSeccion, ThisListView.SelectedItems[0].SubItems[0].Text);
+                AddCalForm F = new AddCalForm(ActualSeccion, ThisListView.SelectedItems[0].SubItems[0].Text, 
+                                    ConseguirIDEstudiante(ThisListView.SelectedItems[0].SubItems[0].Text));
                 F.ShowDialog();
             }
+        }
+
+        private void BtnCreateAsig_Click(object sender, EventArgs e)
+        {
+            AddAsignaturaForm f = new AddAsignaturaForm(comboBoxAsig);
+            f.ShowDialog();
         }
     }
 }

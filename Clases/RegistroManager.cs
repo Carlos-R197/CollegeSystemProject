@@ -115,6 +115,20 @@ namespace Clases
 
             return registros;
         }
+
+        public static void AñadirRegistro(string id, int cal, string materia, int creditos)
+        {
+            string filePath = Environment.CurrentDirectory + "\\" + id + "\\Trimestre1.csv";
+            if (!File.Exists(filePath))
+            {
+                File.WriteAllText(filePath, "Materia" + "," + "Creditos" + "," + "Nota" + Environment.NewLine);
+            }
+            string[] lineas = File.ReadAllLines(filePath);
+            string[] data;
+
+            File.AppendAllText(filePath, materia + "," + creditos + "," + cal + Environment.NewLine);     
+
+        }
     }
 
 }

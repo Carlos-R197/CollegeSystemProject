@@ -52,6 +52,12 @@
     <Compile Include="AddCal.Designer.cs">
       <DependentUpon>AddCal.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAsignatura.Designer.cs">
+      <DependentUpon>AddAsignatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="AddCal.resx">
       <DependentUpon>AddCal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddAsignatura.resx">
+      <DependentUpon>AddAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>

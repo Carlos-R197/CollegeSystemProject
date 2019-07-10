@@ -59,12 +59,6 @@ namespace FTSE_FINAL_PROJECT
             }
         }
         //Muestra el formulario para agregar una nueva asignatura
-        public void ShowAddSubjectForm()
-        {
-            AddSubjectForm F4 = new AddSubjectForm();
-
-            F4.ShowDialog();
-        }
         //Accede al archivo del trimestre para reescribirlo
         public void ModifyPeriod()
         {
@@ -115,10 +109,6 @@ namespace FTSE_FINAL_PROJECT
         }
 
         //BOTON para agregar asignatura
-        private void BtnAddSubject_Click(object sender, EventArgs e)
-        {
-            ShowAddSubjectForm();
-        }
 
         //BOTON para actualizar la informacion del listview
         private void BtnRefresh_Click(object sender, EventArgs e)
