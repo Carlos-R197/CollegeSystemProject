@@ -17,3 +17,20 @@ C:\Users\DELL\Source\Repos\Final-Project\UnitTest\obj\Debug\UnitTest.csproj.Core
 C:\Users\DELL\Source\Repos\Final-Project\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
 C:\Users\DELL\Source\Repos\Final-Project\UnitTest\obj\Debug\UnitTest.dll
 C:\Users\DELL\Source\Repos\Final-Project\UnitTest\obj\Debug\UnitTest.pdb
+D:\Final Project\UnitTest\bin\Debug\UnitTest.dll
+D:\Final Project\UnitTest\bin\Debug\UnitTest.pdb
+D:\Final Project\UnitTest\bin\Debug\Clases.dll
+D:\Final Project\UnitTest\bin\Debug\xunit.abstractions.dll
+D:\Final Project\UnitTest\bin\Debug\xunit.assert.dll
+D:\Final Project\UnitTest\bin\Debug\xunit.core.dll
+D:\Final Project\UnitTest\bin\Debug\xunit.execution.desktop.dll
+D:\Final Project\UnitTest\bin\Debug\Clases.pdb
+D:\Final Project\UnitTest\bin\Debug\xunit.abstractions.xml
+D:\Final Project\UnitTest\bin\Debug\xunit.assert.xml
+D:\Final Project\UnitTest\bin\Debug\xunit.core.xml
+D:\Final Project\UnitTest\bin\Debug\xunit.execution.desktop.xml
+D:\Final Project\UnitTest\obj\Debug\UnitTest.csprojAssemblyReference.cache
+D:\Final Project\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache
+D:\Final Project\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
+D:\Final Project\UnitTest\obj\Debug\UnitTest.dll
+D:\Final Project\UnitTest\obj\Debug\UnitTest.pdb

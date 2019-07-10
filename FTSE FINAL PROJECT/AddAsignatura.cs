@@ -13,7 +13,7 @@ namespace FTSE_FINAL_PROJECT
 {
     public partial class AddAsignaturaForm : Form
     {
-        public static string cantCred;
+        public static string cantCred = "4";
 
         ComboBox comboBox;
         public AddAsignaturaForm(ComboBox combo)

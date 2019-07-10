@@ -66,8 +66,8 @@ namespace UnitTest
 
 
         [Theory]
-        [InlineData (3.5,"1-2019-0002",1)]
-        [InlineData(3.8, "1-2019-0001", 2)]
+        [InlineData (3,"1-2019-0002", 1)]
+        [InlineData(3.25, "1-2019-0001", 1)]
         public void IndiceManager_IndiceTrimestralCorrecto(decimal expected,string id, int trimestre)
         {
             decimal actual = IndiceManager.ObtenerIndiceTrimestre( id, trimestre);

@@ -16,18 +16,21 @@ namespace FTSE_FINAL_PROJECT
         public Seccion ActualSeccion { get; set; }
         public string NombreEstudiante { get; set; }
         public string IDEstudiante { get; set; }
-        public AddCalForm(Seccion sec, string nombreEstudiante, string idEstudiante)
+        public ProfesorInterface Forma { get; set; }
+        public AddCalForm(Seccion sec, string nombreEstudiante, string idEstudiante, ProfesorInterface forma)
         {
             InitializeComponent();
             this.CenterToScreen();
             ActualSeccion = sec;
             NombreEstudiante = nombreEstudiante;
             IDEstudiante = idEstudiante;
+            this.Forma = forma;
         }    
         private void btnSave_Click(object sender, EventArgs e)
         {
             ActualSeccion.AñadirCalificacion(new EstudianteSeccion(NombreEstudiante, Int32.Parse(txtGrade.Text)));
             ProfesorInterface.ActualSeccion = ActualSeccion;
+            Forma.MostrarSeccionActual();
             RegistroManager.AñadirRegistro(IDEstudiante, Int32.Parse(txtGrade.Text), ActualSeccion.Materia, int.Parse(AddAsignaturaForm.cantCred));
             txtGrade.Clear();
             this.Close();

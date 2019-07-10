@@ -44,6 +44,7 @@ namespace FTSE_FINAL_PROJECT
 
             labelName.Text = ActualProfesor.Nombre;
 
+            BuscarAsignaturas();
             //comboBoxAsig.DataSource = combo;
             //comboBoxAsig.Items.Add("Calculo Diferencial");
            // comboBoxAsig.Items.Add("Calculo Integral");
@@ -263,7 +264,7 @@ namespace FTSE_FINAL_PROJECT
             if (estado == State.ViendoListaEstCal && ThisListView.SelectedItems.Count > 0 && ThisListView.Items.Count > 0)
             {
                 AddCalForm F = new AddCalForm(ActualSeccion, ThisListView.SelectedItems[0].SubItems[0].Text, 
-                                    ConseguirIDEstudiante(ThisListView.SelectedItems[0].SubItems[0].Text));
+                                    ConseguirIDEstudiante(ThisListView.SelectedItems[0].SubItems[0].Text), this);
                 F.ShowDialog();
             }
         }
@@ -272,6 +273,21 @@ namespace FTSE_FINAL_PROJECT
         {
             AddAsignaturaForm f = new AddAsignaturaForm(comboBoxAsig);
             f.ShowDialog();
+        }
+
+        private void BuscarAsignaturas()
+        {
+            string filePath = Environment.CurrentDirectory + "\\" + ActualProfesor.Id;
+            string[] directorios = Directory.GetDirectories(filePath);
+            string[] nombreDirectorio;
+            if (directorios.Length > 0)
+            {
+                for (int i = 0; i < directorios.Length; i++)
+                {
+                    nombreDirectorio = directorios[i].Split('\\');
+                    comboBoxAsig.Items.Add(nombreDirectorio[nombreDirectorio.Length - 1]);
+                }
+            }
         }
     }
 }

@@ -74,6 +74,30 @@ namespace Clases
                 data = lineas[i].Split(',');
                 regs.Add(new Registro(data[0], data[1], Int16.Parse(data[2])));
             }
+            /*
+            for (int i = regs.Count - 2; i >= 0; i--)
+            {
+                if (regs[regs.Count - 1].subject == regs[i].subject)
+                    regs.RemoveAt(i);
+            }
+            */
+
+            for (int i = regs.Count - 1; i >= 0; i--)
+            {
+                for (int j = regs.Count - 2; j >= 0; j--)
+                {
+                    if (j == i)
+                    {
+                        continue;             
+                    }
+                    if (regs[i].subject == regs[j].subject)
+                    {
+                        regs.RemoveAt(j);
+                        i--;
+                        break;
+                    }
+                }
+            }
 
             registros = regs;
         }
@@ -102,7 +126,7 @@ namespace Clases
         public static List<Registro> ObtenerRegistrosTrimestre(string id, int trimestre)
         {
             List<Registro> registros = new List<Registro>();
-            string filePath = Environment.CurrentDirectory + "\\" + id;
+            string filePath = @"D:\Final Project\FTSE FINAL PROJECT\bin\Debug\" + "\\" + id;
             filePath += "\\Trimestre" + trimestre + ".csv";
             string[] lineas = File.ReadAllLines(filePath);
             string[] data;
@@ -123,9 +147,7 @@ namespace Clases
             {
                 File.WriteAllText(filePath, "Materia" + "," + "Creditos" + "," + "Nota" + Environment.NewLine);
             }
-            string[] lineas = File.ReadAllLines(filePath);
-            string[] data;
-
+               
             File.AppendAllText(filePath, materia + "," + creditos + "," + cal + Environment.NewLine);     
 
         }
