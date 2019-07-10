@@ -23,6 +23,11 @@ namespace Clases
             this.Nombre = nombre;
             this.Password = password;
         }
+
+        public Profesor(string nombre)
+        {
+            this.Nombre = nombre;
+        }
         public static void CrearArchivo()
         {
             string filePath = Environment.CurrentDirectory + "\\Profesores.csv";
@@ -31,6 +36,13 @@ namespace Clases
             {
                 File.AppendAllText(filePath, "ID" + "," + "Nombre" +  "," + "Password" + Environment.NewLine);
             }
+        }
+        private static void ReescribirArchivo()
+        {
+            string filePath = Environment.CurrentDirectory + "\\Profesores.csv";
+
+            File.WriteAllText(filePath, "ID" + "," + "Nombre" + "," + "Password" + Environment.NewLine);
+
         }
         public static string AñadirProfesor(Profesor pro)
         {
@@ -52,7 +64,7 @@ namespace Clases
                     File.AppendAllText(filePath, id + "," + pro.Nombre + "," + pro.Password + Environment.NewLine);
 
                     profesores.Remove(pro);
-                    CrearArchivo();
+                    ReescribirArchivo();
                     for (int i = 0; i < profesores.Count; i++)
                     {
                         AñadirProfesor(pro);

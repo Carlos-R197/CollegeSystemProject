@@ -31,28 +31,35 @@ namespace FTSE_FINAL_PROJECT
 
         private void TakeAllData(string id)
         {
-            List<Trimestre> trimestres = RegistroManager.ObtenerTodosRegistros(id);
-
-            foreach (Trimestre tri in trimestres)
+            try
             {
-                foreach (Registro reg in tri.Registros)
-                {
-                    ThisListBox.Items.Add($"{reg.subject}               {reg.credValue}               {IndiceManager.TransformarEnValor(reg.grade)}");
-                    Cred = int.Parse(reg.credValue);
-                    Grade = IndiceManager.TransformarEnValor(reg.grade);
-                    totalCred += Cred;
+                List<Trimestre> trimestres = RegistroManager.ObtenerTodosRegistros(id);
 
-                    totalMult += (Cred * Grade);
+                foreach (Trimestre tri in trimestres)
+                {
+                    foreach (Registro reg in tri.Registros)
+                    {
+                        ThisListBox.Items.Add($"{reg.subject}               {reg.credValue}               {IndiceManager.TransformarEnValor(reg.grade)}");
+                        Cred = int.Parse(reg.credValue);
+                        Grade = IndiceManager.TransformarEnValor(reg.grade);
+                        totalCred += Cred;
+
+                        totalMult += (Cred * Grade);
+                    }
+
+                    decimal indice = totalMult / totalCred;
+
+                    ThisListBox.Items.Add($"Su indice trimestral es: {Decimal.Round(indice, 2)}");
                 }
 
-                decimal indice = totalMult / totalCred;
-
-                ThisListBox.Items.Add($"Su indice trimestral es: {Decimal.Round(indice, 2)}");
+                decimal indiceAcumulado = Decimal.Round(IndiceManager.ObtenerIndiceAcumulado(id), 2);
+                ThisListBox.Items.Add("");
+                ThisListBox.Items.Add($"Su indice general es: {indiceAcumulado} {IndiceManager.Honor(indiceAcumulado)}");
             }
-
-            decimal indiceAcumulado = Decimal.Round(IndiceManager.ObtenerIndiceAcumulado(id), 2);
-            ThisListBox.Items.Add("");
-            ThisListBox.Items.Add($"Su indice general es: {indiceAcumulado} {IndiceManager.Honor(indiceAcumulado)}");
+            catch(Exception)
+            {
+                MessageBox.Show("Debe tener trimestres registrados para poder obtener el indice", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)

@@ -53,15 +53,30 @@ namespace FTSE_FINAL_PROJECT
                 else
                 {
                     if (!Profesor.VerificarIdExiste(txtEnrollment.Text))
-                        MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("El id no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     else if (!Profesor.VerificarPasswordExiste(txtPassword.Text))
-                        MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Contraseña incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     else
-                        MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Datos incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            /*
+            else if (txtEnrollment.Text.StartsWith("x"))
+            {
+                if (txtPassword.Text.Equals("654123"))
+                {
+                    this.Hide();
+                    AdministradorInterface F3 = new AdministradorInterface();
+                    F3.ShowDialog();
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Contraseña incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            */
             else
             {
                 MessageBox.Show("El id no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
