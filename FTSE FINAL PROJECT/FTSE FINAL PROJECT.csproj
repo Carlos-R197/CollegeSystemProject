@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCal.Designer.cs">
+      <DependentUpon>AddCal.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="UserInterface.Designer.cs">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCal.resx">
+      <DependentUpon>AddCal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>

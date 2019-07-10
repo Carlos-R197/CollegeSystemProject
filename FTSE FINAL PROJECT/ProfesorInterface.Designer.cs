@@ -41,7 +41,6 @@ namespace FTSE_FINAL_PROJECT
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnNewSec = new System.Windows.Forms.Button();
             this.btnModifyTri = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -54,6 +53,7 @@ namespace FTSE_FINAL_PROJECT
             this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelNumSec = new System.Windows.Forms.Label();
+            this.btnCal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,10 +131,10 @@ namespace FTSE_FINAL_PROJECT
             // btnAddStudent
             // 
             this.btnAddStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddStudent.Location = new System.Drawing.Point(464, 548);
+            this.btnAddStudent.Location = new System.Drawing.Point(575, 548);
             this.btnAddStudent.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(171, 36);
+            this.btnAddStudent.Size = new System.Drawing.Size(185, 36);
             this.btnAddStudent.TabIndex = 3;
             this.btnAddStudent.Text = "Agregar estudiante";
             this.btnAddStudent.UseVisualStyleBackColor = true;
@@ -143,10 +143,10 @@ namespace FTSE_FINAL_PROJECT
             // btnView
             // 
             this.btnView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnView.Location = new System.Drawing.Point(917, 82);
+            this.btnView.Location = new System.Drawing.Point(867, 79);
             this.btnView.Margin = new System.Windows.Forms.Padding(4);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(191, 36);
+            this.btnView.Size = new System.Drawing.Size(241, 39);
             this.btnView.TabIndex = 3;
             this.btnView.Text = "Ver lista estudiantes";
             this.btnView.UseVisualStyleBackColor = true;
@@ -164,22 +164,10 @@ namespace FTSE_FINAL_PROJECT
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(883, 548);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(117, 36);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
             // btnNewSec
             // 
             this.btnNewSec.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewSec.Location = new System.Drawing.Point(643, 548);
+            this.btnNewSec.Location = new System.Drawing.Point(768, 548);
             this.btnNewSec.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewSec.Name = "btnNewSec";
             this.btnNewSec.Size = new System.Drawing.Size(112, 36);
@@ -218,7 +206,7 @@ namespace FTSE_FINAL_PROJECT
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(763, 548);
+            this.btnDelete.Location = new System.Drawing.Point(888, 548);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(112, 36);
@@ -295,11 +283,24 @@ namespace FTSE_FINAL_PROJECT
             this.labelNumSec.TabIndex = 15;
             this.labelNumSec.Text = "1";
             // 
+            // btnCal
+            // 
+            this.btnCal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCal.Location = new System.Drawing.Point(363, 548);
+            this.btnCal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCal.Name = "btnCal";
+            this.btnCal.Size = new System.Drawing.Size(204, 36);
+            this.btnCal.TabIndex = 16;
+            this.btnCal.Text = "Agregar calificación";
+            this.btnCal.UseVisualStyleBackColor = true;
+            this.btnCal.Click += new System.EventHandler(this.BtnCal_Click);
+            // 
             // ProfesorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1129, 609);
+            this.Controls.Add(this.btnCal);
             this.Controls.Add(this.labelNumSec);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label6);
@@ -310,7 +311,6 @@ namespace FTSE_FINAL_PROJECT
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnModifyTri);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNewSec);
             this.Controls.Add(this.btnView);
@@ -344,7 +344,6 @@ namespace FTSE_FINAL_PROJECT
         private System.Windows.Forms.Button btnAddStudent;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNewSec;
         private System.Windows.Forms.Button btnModifyTri;
         private System.Windows.Forms.ListView ThisListView;
@@ -358,5 +357,6 @@ namespace FTSE_FINAL_PROJECT
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelNumSec;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Button btnCal;
     }
 }

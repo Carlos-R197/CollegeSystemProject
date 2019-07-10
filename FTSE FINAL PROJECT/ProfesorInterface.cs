@@ -15,16 +15,18 @@ namespace FTSE_FINAL_PROJECT
     public partial class ProfesorInterface : Form
     {
         private Profesor ActualProfesor;
-        private Seccion ActualSeccion;
+        public static Seccion ActualSeccion;
         private enum State
         {
             ViendoSecciones,
-            ViendoListaEst
+            ViendoListaEst,
+            ViendoListaEstCal
         }
         State estado = State.ViendoSecciones;
         public ProfesorInterface()
         {
             InitializeComponent();
+            labelNumSec.Text = "x";
             //ActualSeccion = SeccionManager.ObtenerPrimeraSeccion(comboBoxAsig.SelectedItem.ToString(), ActualProfesor);
         }
 
@@ -91,17 +93,6 @@ namespace FTSE_FINAL_PROJECT
             }
         }
 
-        //BOTON para guardar los registros del listview en un archivo de trimestres e informarle al usuario
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-            //int trimestreActual = Int32.Parse(labelNumTrismestre.Text);
-            //int PeriodValue = RegistroManager.GuardarTrimestreEspecifico(ActualProfesor.Id, trimestreActual);
-
-            //MessageBox.Show($"El trimestre {PeriodValue} ha sido guardado con exito", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //ThisListView.Items.Clear();
-            //labelNumTrismestre.Text = (RegistroManager.DeterminarCantidadArchivos(ActualProfesor.Id.ToString()) + 1).ToString();
-        }
-
         //BOTON para modificar el archivo del trimestre seleccionado
         private void BtnModifyTri_Click(object sender, EventArgs e)
         {
@@ -163,7 +154,7 @@ namespace FTSE_FINAL_PROJECT
 
         private void BtnAddStudent_Click(object sender, EventArgs e)
         {
-            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
+            if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0 && estado == State.ViendoListaEst)
             {
                 ActualSeccion.AñadirEstudiante(ThisListView.SelectedItems[0].SubItems[1].Text);
                 MostrarSeccionActual();
@@ -187,6 +178,9 @@ namespace FTSE_FINAL_PROJECT
             ThisListView.Items.Clear();
             ThisListView.Columns[0].Text = "Sección";
             ThisListView.Columns[1].Text = "Materia";
+            labelNumSec.Text = "x";
+            estado = State.ViendoSecciones;
+
             List<Seccion> secciones = SeccionManager.ObtenerSecciones(comboBoxAsig.Text, ActualProfesor);
             if (secciones.Count > 0)
             {
@@ -200,19 +194,22 @@ namespace FTSE_FINAL_PROJECT
                 ThisListView.Items.Add("No hay secciones registradas");
         }
 
-        private void MostrarSeccionActual()
+        public void MostrarSeccionActual()
         {
             ThisListView.Items.Clear();
             ThisListView.Columns[0].Text = "Nombre";
-            ThisListView.Columns[1].Text = "";
+            ThisListView.Columns[1].Text = "Calificación";
+            labelNumSec.Text = ActualSeccion.NumeroSeccion.ToString();
+            estado = State.ViendoListaEstCal;
 
-            List<string> estudiantes = ActualSeccion.NombreEstudiantes;
+            List<EstudianteSeccion> estudiantes = ActualSeccion.Estudiantes;
 
             if (estudiantes.Count > 0)
             {
-                foreach (string est in ActualSeccion.NombreEstudiantes)
+                foreach (EstudianteSeccion est in estudiantes)
                 {
-                    ThisListView.Items.Add(est);
+                    ListViewItem a = ThisListView.Items.Add(est.Nombre);
+                    a.SubItems.Add(est.Cal.ToString());
                 }
             }
             else
@@ -223,11 +220,20 @@ namespace FTSE_FINAL_PROJECT
         {
             if (estado == State.ViendoSecciones)
             {
-                List<string> est = SeccionManager.ObtenerListaEstudiantes(comboBoxAsig.Text, ActualProfesor, Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text));
+                List<EstudianteSeccion> est = SeccionManager.ObtenerListaEstudiantes(comboBoxAsig.Text, ActualProfesor, Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text));
                 ActualSeccion = new Seccion(ActualProfesor, est, 
                                 Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text), ThisListView.SelectedItems[0].SubItems[1].Text);
                 MostrarSeccionActual();
-                estado = State.ViendoListaEst;
+                estado = State.ViendoListaEstCal;
+            }
+        }
+
+        private void BtnCal_Click(object sender, EventArgs e)
+        {
+            if (estado == State.ViendoListaEstCal && ThisListView.SelectedItems.Count > 0 && ThisListView.Items.Count > 0)
+            {
+                AddCalForm F = new AddCalForm(ActualSeccion, ThisListView.SelectedItems[0].SubItems[0].Text);
+                F.ShowDialog();
             }
         }
     }
