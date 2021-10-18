@@ -50,6 +50,7 @@ namespace Clases
             string id = IdGenerator.GenerarIdProfesor();
             File.AppendAllText(filePath, id + "," + pro.Nombre + "," + pro.Password + Environment.NewLine);
             Directory.CreateDirectory(Environment.CurrentDirectory + "\\" + id);
+            pro.Id = id;
             return id;
         }
         public static void EliminarProfesor(string id)
@@ -60,30 +61,36 @@ namespace Clases
                 if (id.Equals(pro.Id))
                 {
                     //Antes de remover al estudiante de la lista ponlo en el archivo de estudiantes borrados.
-                    string filePath = Environment.CurrentDirectory + "\\Estudiantes_temp.csv";
+                    string filePath = Environment.CurrentDirectory + "\\Profesores_temp.csv";
                     File.AppendAllText(filePath, id + "," + pro.Nombre + "," + pro.Password + Environment.NewLine);
 
                     profesores.Remove(pro);
+                    Directory.Delete(Environment.CurrentDirectory + "\\" + id);
                     ReescribirArchivo();
-                    for (int i = 0; i < profesores.Count; i++)
-                    {
-                        AñadirProfesor(pro);
-                    }
+                    break;
                 }
+            }
 
+            foreach (Profesor pro in profesores)
+            { 
+                AñadirProfesor(pro);
             }
         }
         public static List<Profesor> ObtenerListaProfesores()
         {
             string filePath = Environment.CurrentDirectory + "\\Profesores.csv";
             List<Profesor> profesores = new List<Profesor>();
-            string[] lineas = File.ReadAllLines(filePath);
-            string[] datos;
 
-            for (int i = 1; i < lineas.Length; i++)
+            if (File.Exists(filePath))
             {
-                datos = lineas[i].Split(',');
-                profesores.Add(new Profesor(datos[0], datos[1], datos[2]));
+                string[] lineas = File.ReadAllLines(filePath);
+                string[] datos;
+
+                for (int i = 1; i < lineas.Length; i++)
+                {
+                    datos = lineas[i].Split(',');
+                    profesores.Add(new Profesor(datos[0], datos[1], datos[2]));
+                }
             }
 
             return profesores;

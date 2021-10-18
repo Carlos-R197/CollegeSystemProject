@@ -33,6 +33,8 @@ namespace Clases
         private void CrearNuevaSeccion()
         {
             string filePath = Environment.CurrentDirectory + "\\" + Profesor.Id + "\\" + Materia;
+            Directory.CreateDirectory(filePath);
+
             filePath += "\\Seccion" + NumeroSeccion + ".csv";
             File.WriteAllText(filePath, "Estudiantes" + "," + "Calificaciones" + "," + "Profesor" + "," + "Seccion" + "," + "Materia" + Environment.NewLine);
             File.AppendAllText(filePath, "," + Profesor.Nombre + "," + NumeroSeccion + Environment.NewLine);
@@ -41,7 +43,11 @@ namespace Clases
         private int ObtenerCantidadArchivos()
         {
             string dir = Environment.CurrentDirectory + "\\" + Profesor.Id + "\\" + Materia;
-            string[] archivos = Directory.GetFiles(dir, "*.csv");
+            string[] archivos;
+            if (Directory.Exists(dir))
+                archivos = Directory.GetFiles(dir, "*.csv");
+            else
+                archivos = new string[0];
             return archivos.Length;
         }
 

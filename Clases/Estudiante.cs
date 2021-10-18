@@ -49,6 +49,7 @@ namespace Clases
             string id = IdGenerator.GenerarIdEstudiante();
             File.AppendAllText(filePath, id + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
             Directory.CreateDirectory(Environment.CurrentDirectory + "\\" + id);
+            est.ID = id;
             return id;
         }
         public static void EliminarEstudiante(string id)
@@ -63,6 +64,7 @@ namespace Clases
                     File.AppendAllText(filePath, id + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
 
                     estudiantes.Remove(est);
+                    Directory.Delete(Environment.CurrentDirectory + "\\" + id);
                     ReescribirArchivo();
                     for (int i = 0; i < estudiantes.Count; i++)
                     {
@@ -77,14 +79,19 @@ namespace Clases
         {
             string filePath = Environment.CurrentDirectory + "\\Estudiantes.csv";
             List<Estudiante> estudiantes = new List<Estudiante>();
-            string[] lineas = File.ReadAllLines(filePath);
-            string[] datos;
-            //Empezando desde la segunda linea lee los datos y guardarlo como elemento en la lista.
-            for (int i = 1; i < lineas.Length; i++)
+
+            if (File.Exists(filePath))
             {
-                datos = lineas[i].Split(',');
-                estudiantes.Add(new Estudiante(datos[0], datos[3], datos[1], datos[2]));
+                string[] lineas = File.ReadAllLines(filePath);
+                string[] datos;
+                //Empezando desde la segunda linea lee los datos y guardarlo como elemento en la lista.
+                for (int i = 1; i < lineas.Length; i++)
+                {
+                    datos = lineas[i].Split(',');
+                    estudiantes.Add(new Estudiante(datos[0], datos[3], datos[1], datos[2]));
+                }
             }
+
             return estudiantes;
         }
         public static bool VerificarEstudianteExiste(string id, string password)
