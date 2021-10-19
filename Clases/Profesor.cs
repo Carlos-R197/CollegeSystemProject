@@ -65,12 +65,12 @@ namespace Clases
                     File.AppendAllText(filePath, id + "," + pro.Nombre + "," + pro.Password + Environment.NewLine);
 
                     profesores.Remove(pro);
-                    Directory.Delete(Environment.CurrentDirectory + "\\" + id);
-                    ReescribirArchivo();
                     break;
                 }
             }
 
+            Directory.Delete(Environment.CurrentDirectory + "\\" + id, true);
+            ReescribirArchivo();
             foreach (Profesor pro in profesores)
             { 
                 AñadirProfesor(pro);

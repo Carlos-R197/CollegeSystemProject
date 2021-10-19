@@ -14,7 +14,6 @@ namespace FTSE_FINAL_PROJECT
 {
     public partial class AdministradorInterface: Form
     {
-
         public AdministradorInterface()
         {
             InitializeComponent();
@@ -29,7 +28,7 @@ namespace FTSE_FINAL_PROJECT
 
 
         //Agrega toda la data disponible en la lista de registros al ListView
-        public void AddData()
+        public void RefreshData()
         {
             if (TipoCombo.SelectedIndex == 0)
             {
@@ -51,14 +50,13 @@ namespace FTSE_FINAL_PROJECT
             {
                 ThisListView.Clear();
 
-                ThisListView.Columns.Add("Nombre").Width = 350;
                 ThisListView.Columns.Add("ID").Width = 200;
+                ThisListView.Columns.Add("Nombre").Width = 350;
 
                 foreach (Profesor prof in Profesor.ObtenerListaProfesores())
                 {
-                    ListViewItem a = ThisListView.Items.Add(prof.Nombre);
-
-                    a.SubItems.Add(prof.Id);
+                    ListViewItem a = ThisListView.Items.Add(prof.Id);
+                    a.SubItems.Add(prof.Nombre);
                 }
             }
         }
@@ -93,12 +91,6 @@ namespace FTSE_FINAL_PROJECT
             ShowAddSubjectForm();
         }
 
-        //BOTON para actualizar la informacion del listview
-        private void BtnRefresh_Click(object sender, EventArgs e)
-        {
-            AddData();
-        }
-
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -111,16 +103,24 @@ namespace FTSE_FINAL_PROJECT
         {
             if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0)
             {
-                DialogResult result = MessageBox.Show("Esta seguro de que desea eliminar al estudiante?", "Importante", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (result == DialogResult.Yes)
+                if (TipoCombo.Text == "Estudiantes")
                 {
-                    Estudiante.EliminarEstudiante(ThisListView.SelectedItems[0].Text);
+                    DialogResult result = MessageBox.Show("Esta seguro de que desea eliminar al estudiante?", "Importante", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        Estudiante.EliminarEstudiante(ThisListView.SelectedItems[0].Text);
+                    }
                 }
-                else if (result == DialogResult.No)
+                else if (TipoCombo.Text == "Profesores")
                 {
-                    
+                    DialogResult result = MessageBox.Show("Esta seguro de que desea eliminar al profesor?", "Importante", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        Profesor.EliminarProfesor(ThisListView.SelectedItems[0].Text);
+                    }
                 }
 
+                RefreshData();
             }
             else
             {
@@ -128,5 +128,15 @@ namespace FTSE_FINAL_PROJECT
             }
         }
 
+        private void TipoCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void AdministradorInterface_Load(object sender, EventArgs e)
+        {
+            TipoCombo.SelectedIndex = 0;
+            RefreshData();
+        }
     }
 }

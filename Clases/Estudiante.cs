@@ -64,15 +64,15 @@ namespace Clases
                     File.AppendAllText(filePath, id + "," + est.Nombre + "," + est.Carrera + "," + est.Password + Environment.NewLine);
 
                     estudiantes.Remove(est);
-                    Directory.Delete(Environment.CurrentDirectory + "\\" + id);
-                    ReescribirArchivo();
-                    for (int i = 0; i < estudiantes.Count; i++)
-                    {
-                        AñadirEstudiante(est);
-                    }
                     break;
                 }
+            }
 
+            Directory.Delete(Environment.CurrentDirectory + "\\" + id, true);
+            ReescribirArchivo();
+            for (int i = 0; i < estudiantes.Count; i++)
+            {
+                AñadirEstudiante(estudiantes[i]);
             }
         }
         public static List<Estudiante> ObtenerListaEstudiantes()
