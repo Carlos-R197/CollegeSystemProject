@@ -178,8 +178,11 @@ namespace FTSE_FINAL_PROJECT
             {
                 if (ThisListView.Items.Count > 0 && ThisListView.SelectedItems.Count > 0 && estado == State.ViendoListaEst)
                 {
-                    ActualSeccion.AñadirEstudiante(ThisListView.SelectedItems[0].SubItems[1].Text);
-                    MostrarSeccionActual();
+                    if (ActualSeccion != null)
+                    {
+                        ActualSeccion.AñadirEstudiante(ThisListView.SelectedItems[0].SubItems[1].Text);
+                        MostrarSeccionActual();
+                    }
                 }
                 else
                     MessageBox.Show("Debe seleccionar un estudiante para añadir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

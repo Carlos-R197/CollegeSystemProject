@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Linq;
 
 namespace Clases
 {
@@ -147,9 +148,28 @@ namespace Clases
             {
                 File.WriteAllText(filePath, "Materia" + "," + "Creditos" + "," + "Nota" + Environment.NewLine);
             }
-               
-            File.AppendAllText(filePath, materia + "," + creditos + "," + cal + Environment.NewLine);     
 
+            bool valueRepeatedFound = false;
+            string[] lines = File.ReadAllLines(filePath);
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] data = lines[i].Split(',');
+                if (data[0] == materia)
+                {
+                    lines[i] = materia + "," + creditos + "," + cal;
+                    valueRepeatedFound = true;
+                }
+            }
+
+            File.WriteAllText(filePath, "Materia" + "," + "Creditos" + "," + "Nota" + Environment.NewLine);
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] data = lines[i].Split(',');
+                File.AppendAllText(filePath, data[0] + "," + data[1] + "," + data[2] + Environment.NewLine);
+            }
+
+            if (!valueRepeatedFound)
+                File.AppendAllText(filePath, materia + "," + creditos + "," + cal + Environment.NewLine);
         }
     }
 
