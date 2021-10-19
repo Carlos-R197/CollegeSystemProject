@@ -26,7 +26,7 @@ namespace FTSE_FINAL_PROJECT
         public ProfesorInterface()
         {
             InitializeComponent();
-            labelNumSec.Text = "x";
+            labelNumSec.Text = "X";
             //ActualSeccion = SeccionManager.ObtenerPrimeraSeccion(comboBoxAsig.SelectedItem.ToString(), ActualProfesor);
         }
 
@@ -152,9 +152,17 @@ namespace FTSE_FINAL_PROJECT
         {
             try
             {
-                ActualSeccion = new Seccion(ActualProfesor, comboBoxAsig.Text);
-                labelNumSec.Text = ActualSeccion.NumeroSeccion.ToString();
-                MostrarSeccionActual();
+                if (comboBoxAsig.SelectedItem != null)
+                {
+                    ActualSeccion = new Seccion(ActualProfesor, comboBoxAsig.Text);
+                    labelNumSec.Text = ActualSeccion.NumeroSeccion.ToString();
+                    MostrarSeccionActual();
+                }
+                else 
+                {
+                    MessageBox.Show("Debe de seleccionar una asignatura antes de intentar crear una sección",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch
             {
@@ -242,8 +250,8 @@ namespace FTSE_FINAL_PROJECT
 
         private void ThisListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (estado == State.ViendoSecciones)
                 {
                     List<EstudianteSeccion> est = SeccionManager.ObtenerListaEstudiantes(comboBoxAsig.Text, ActualProfesor, Int32.Parse(ThisListView.SelectedItems[0].SubItems[0].Text));
@@ -252,11 +260,11 @@ namespace FTSE_FINAL_PROJECT
                     MostrarSeccionActual();
                     estado = State.ViendoListaEstCal;
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch
+            //{
+                //MessageBox.Show("Ha ocurrido un error, intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void BtnCal_Click(object sender, EventArgs e)

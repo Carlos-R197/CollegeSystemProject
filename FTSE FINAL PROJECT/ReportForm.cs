@@ -14,8 +14,8 @@ namespace FTSE_FINAL_PROJECT
     public partial class ReportForm : Form
     {
         private int Cred;
-        private decimal Grade;
-        private decimal totalMult;
+        private float Grade;
+        private float totalMult;
         private int totalCred;
         private string idEstudiante;
         public ReportForm()
@@ -47,12 +47,12 @@ namespace FTSE_FINAL_PROJECT
                         totalMult += (Cred * Grade);
                     }
 
-                    decimal indice = totalMult / totalCred;
+                    float indice = totalMult / totalCred;
 
-                    ThisListBox.Items.Add($"Su indice trimestral es: {Decimal.Round(indice, 2)}");
+                    ThisListBox.Items.Add($"Su indice trimestral es: {Math.Round(indice, 2)}");
                 }
 
-                decimal indiceAcumulado = Decimal.Round(IndiceManager.ObtenerIndiceAcumulado(id), 2);
+                float indiceAcumulado = (float)Math.Round(IndiceManager.ObtenerIndiceAcumulado(id), 2);
                 ThisListBox.Items.Add("");
                 ThisListBox.Items.Add($"Su indice general es: {indiceAcumulado} {IndiceManager.Honor(indiceAcumulado)}");
             }

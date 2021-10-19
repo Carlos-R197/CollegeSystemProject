@@ -54,7 +54,7 @@ namespace Clases
         public void AñadirEstudiante(string nombreEstudiante)
         {
             string filePath = Environment.CurrentDirectory + "\\" + Profesor.Id + "\\" + Materia + "\\Seccion" + NumeroSeccion + ".csv";
-            File.AppendAllText(filePath, nombreEstudiante + Environment.NewLine);
+            File.AppendAllText(filePath, nombreEstudiante + "," + "0" + Environment.NewLine);
             Estudiantes.Add(new EstudianteSeccion(nombreEstudiante));
         }
 
