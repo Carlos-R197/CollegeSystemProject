@@ -53,7 +53,7 @@ namespace UnitTestProject
         [DataRow("Summa Cum Laude", 4f)]
         [DataRow("Magna Cum Laude", 3.55f)]
         [DataRow("Cum Laude", 3.3f)]
-        [DataRow("Sin honor", 2.5f)]
+        [DataRow("", 2.5f)]
 
         public void HonorConversionTest(string expected, float indice)
         {
