@@ -39,7 +39,7 @@ namespace FTSE_FINAL_PROJECT
                 {
                     foreach (Registro reg in tri.Registros)
                     {
-                        ThisListBox.Items.Add($"{reg.subject}               {reg.credValue}               {IndiceManager.TransformarEnValor(reg.grade)}");
+                        ThisListBox.Items.Add($"Materia: {reg.subject}   Credito: {reg.credValue}   Grado: {IndiceManager.TransformarEnValor(reg.grade)}");
                         Cred = int.Parse(reg.credValue);
                         Grade = IndiceManager.TransformarEnValor(reg.grade);
                         totalCred += Cred;
@@ -49,12 +49,13 @@ namespace FTSE_FINAL_PROJECT
 
                     float indice = totalMult / totalCred;
 
-                    ThisListBox.Items.Add($"Su indice trimestral es: {Math.Round(indice, 2)}");
+                    ThisListBox.Items.Add("");
+                    ThisListBox.Items.Add($"Indice Trimestral: {Math.Round(indice, 2)}");
                 }
 
                 float indiceAcumulado = (float)Math.Round(IndiceManager.ObtenerIndiceAcumulado(id), 2);
-                ThisListBox.Items.Add("");
-                ThisListBox.Items.Add($"Su indice general es: {indiceAcumulado} {IndiceManager.Honor(indiceAcumulado)}");
+                ThisListBox.Items.Add($"Indice General: {indiceAcumulado}");
+                ThisListBox.Items.Add($"Honor: {IndiceManager.Honor(indiceAcumulado)}");
             }
             catch(Exception)
             {

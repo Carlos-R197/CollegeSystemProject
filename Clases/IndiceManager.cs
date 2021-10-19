@@ -67,7 +67,7 @@ namespace Clases
             else if (indice >= 3.2f)
                 honor = "Cum Laude";
             else
-                honor = "Sin honor";
+                honor = "";
 
             return honor;
         }
