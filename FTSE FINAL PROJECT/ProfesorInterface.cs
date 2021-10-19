@@ -156,7 +156,9 @@ namespace FTSE_FINAL_PROJECT
                 {
                     ActualSeccion = new Seccion(ActualProfesor, comboBoxAsig.Text);
                     labelNumSec.Text = ActualSeccion.NumeroSeccion.ToString();
-                    MostrarSeccionActual();
+                    MessageBox.Show("La sección ha sido creada con éxito.", "Importante",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ModifyPeriod();
                 }
                 else 
                 {
