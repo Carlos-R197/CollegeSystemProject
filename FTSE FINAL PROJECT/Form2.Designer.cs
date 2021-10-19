@@ -244,7 +244,7 @@
 			this.MaximizeBox = false;
 			this.Name = "Form2";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Registrarse";
+			this.Text = "Sign Up";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.checkProvider1)).EndInit();
 			this.ResumeLayout(false);
