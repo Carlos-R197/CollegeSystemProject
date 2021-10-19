@@ -30,7 +30,6 @@
         {
             this.ThisListBox = new System.Windows.Forms.ListBox();
             this.btnAlright = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ThisListBox
@@ -56,29 +55,18 @@
             this.btnAlright.UseVisualStyleBackColor = true;
             this.btnAlright.Click += new System.EventHandler(this.BtnAlright_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(860, 544);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 42);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "Actualizar Data";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
-            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 587);
-            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAlright);
             this.Controls.Add(this.ThisListBox);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ReportForm";
             this.Text = "ReportForm";
+            this.Load += new System.EventHandler(this.ReportForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -87,6 +75,5 @@
 
         private System.Windows.Forms.ListBox ThisListBox;
         private System.Windows.Forms.Button btnAlright;
-        private System.Windows.Forms.Button btnRefresh;
     }
 }

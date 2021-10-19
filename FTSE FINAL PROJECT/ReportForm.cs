@@ -58,11 +58,11 @@ namespace FTSE_FINAL_PROJECT
             }
             catch(Exception)
             {
-                MessageBox.Show("Debe tener trimestres registrados para poder obtener el indice", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe tener trimestres registrados para poder obtener su reporte académico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void BtnRefresh_Click(object sender, EventArgs e)
+        private void ReportForm_Load(object sender, EventArgs e)
         {
             TakeAllData(idEstudiante);
         }
