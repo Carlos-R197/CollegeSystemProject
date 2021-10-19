@@ -100,5 +100,10 @@ namespace FTSE_FINAL_PROJECT
             int num, grade;
             btnSave.Enabled = txtSubject.Text != string.Empty && Int32.TryParse(txtCred.Text, out num) && (Int32.TryParse(txtGrade.Text, out grade) && !(grade > 100));
         }
-    }
+
+		private void label2_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

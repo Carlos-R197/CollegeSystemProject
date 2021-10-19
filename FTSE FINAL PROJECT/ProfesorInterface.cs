@@ -297,5 +297,10 @@ namespace FTSE_FINAL_PROJECT
                 }
             }
         }
-    }
+
+		private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+		{
+
+		}
+	}
 }
